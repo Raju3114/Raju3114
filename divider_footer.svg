@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 50" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&amp;display=swap');
+      
+      .text-title {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900;
+        font-size: 13px;
+        fill: #808090;
+        letter-spacing: 2.5px;
+        text-anchor: middle;
+        filter: drop-shadow(0 0 3px rgba(128, 128, 144, 0.3));
+      }
+      
+      .neon-line {
+        stroke: #333344;
+        stroke-width: 1.5;
+        stroke-opacity: 0.5;
+      }
+      
+      @keyframes laserSweep {
+        0% { transform: translateX(-400px); }
+        100% { transform: translateX(850px); }
+      }
+      
+      .laser-glow {
+        animation: laserSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        fill: url(#laser-grad);
+      }
+      
+      @keyframes blink {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; filter: drop-shadow(0 0 3px #808090); }
+      }
+      .bracket {
+        fill: #808090;
+        animation: blink 2s infinite;
+      }
+    </style>
+    
+    <linearGradient id="laser-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#333344" stop-opacity="0" />
+      <stop offset="50%" stop-color="#808090" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#333344" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Horizontal divider lines -->
+  <line x1="0" y1="12" x2="850" y2="12" class="neon-line" />
+  <line x1="0" y1="38" x2="850" y2="38" class="neon-line" />
+  
+  <!-- Sweeping laser lights -->
+  <rect x="0" y="11" width="400" height="2" class="laser-glow" />
+  <rect x="0" y="37" width="400" height="2" class="laser-glow" style="animation-delay: 2s;" />
+
+  <!-- Centered Title Text -->
+  <text x="425" y="30" class="text-title">
+    <tspan class="bracket">&lt;&lt; </tspan>
+    [SECURE CONNECTION TERMINATED // OFF]
+    <tspan class="bracket"> &gt;&gt;</tspan>
+  </text>
+</svg>

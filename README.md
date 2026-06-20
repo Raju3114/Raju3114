@@ -11,11 +11,9 @@
   <a href="mailto:raj3114kumar@gmail.com"><strong>📩 Transmit Comms Signal</strong></a>
 </p>
 
-```text
-══════════════════════════════════════════════════════════════════════════════
-                 MISSION CONTROL // RAJU-OS v2.0 // ONLINE
-══════════════════════════════════════════════════════════════════════════════
-```
+<p align="center">
+  <img src="./divider_control.svg" alt="Mission Control System Header" width="100%" />
+</p>
 
 ### 🧬 About Me (Core Identity)
 
@@ -31,11 +29,9 @@ I am a **Software Engineer** specializing in transaction-safe backend services, 
   <img src="./about.svg" alt="Engineering Logs System Readout" width="100%" />
 </p>
 
-```text
-══════════════════════════════════════════════════════════════════════════════
-                   SHIP SYSTEMS // MONITOR & DIAGNOSTICS
-══════════════════════════════════════════════════════════════════════════════
-```
+<p align="center">
+  <img src="./divider_systems.svg" alt="Ship Systems Control Dashboard Header" width="100%" />
+</p>
 
 ### 🛠️ Tech Stack & Skills
 
@@ -51,11 +47,9 @@ I am a **Software Engineer** specializing in transaction-safe backend services, 
   <img src="./skills.svg" alt="Spacecraft Systems Dashboard" width="100%" />
 </p>
 
-```text
-══════════════════════════════════════════════════════════════════════════════
-                   MISSION PORTFOLIO // ACTIVE PROTOCOLS
-══════════════════════════════════════════════════════════════════════════════
-```
+<p align="center">
+  <img src="./divider_portfolio.svg" alt="Mission Portfolio Diagrams Header" width="100%" />
+</p>
 
 ### 🏦 Centerpiece Systems
 
@@ -81,21 +75,17 @@ I am a **Software Engineer** specializing in transaction-safe backend services, 
   <img src="./projects.svg" alt="Mission Portfolio Diagrams" width="100%" />
 </p>
 
-```text
-══════════════════════════════════════════════════════════════════════════════
-                   ARCADE MODE // HOSTILE ENGAGEMENT
-══════════════════════════════════════════════════════════════════════════════
-```
+<p align="center">
+  <img src="./divider_arcade.svg" alt="Arcade Mode Simulation Header" width="100%" />
+</p>
 
 <p align="center">
   <img src="./game.svg" alt="Arcade Mode Simulation" width="100%" />
 </p>
 
-```text
-══════════════════════════════════════════════════════════════════════════════
-                   GITHUB DIAGNOSTICS & SYSTEM METRICS
-══════════════════════════════════════════════════════════════════════════════
-```
+<p align="center">
+  <img src="./divider_metrics.svg" alt="GitHub Diagnostics &amp; Metrics Header" width="100%" />
+</p>
 
 ### 📊 Performance Analytics
 
@@ -118,8 +108,6 @@ The grid below tracks contributions to my repositories, defended daily from wave
   </picture>
 </p>
 
-```text
-══════════════════════════════════════════════════════════════════════════════
-                    [SECURE CONNECTION TERMINATED // OFF]
-══════════════════════════════════════════════════════════════════════════════
-```
+<p align="center">
+  <img src="./divider_footer.svg" alt="Connection Terminated Line" width="100%" />
+</p>
