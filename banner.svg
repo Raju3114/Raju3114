@@ -2,7 +2,7 @@
   <defs>
     <!-- Import Google Fonts -->
     <style type="text/css">
-      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;family=Space+Grotesk:wght@700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;family=Space+Grotesk:wght@700&amp;family=Orbitron:wght@800;900&amp;display=swap');
       
       :root {
         --space-bg: #010103;
@@ -43,30 +43,81 @@
       .pulsing-star-delay {
         animation: starPulse 5s ease-in-out infinite 2s;
       }
-
-      /* Glow pulses for branding */
-      @keyframes cyanGlow {
-        0%, 100% { filter: drop-shadow(0 0 4px var(--space-cyan)) drop-shadow(0 0 10px rgba(0, 240, 255, 0.4)); opacity: 0.95; }
-        50% { filter: drop-shadow(0 0 10px var(--space-cyan)) drop-shadow(0 0 25px rgba(0, 240, 255, 0.7)); opacity: 1; }
-      }
-      @keyframes blueGlow {
-        0%, 100% { filter: drop-shadow(0 0 4px var(--space-blue)) drop-shadow(0 0 10px rgba(0, 102, 255, 0.4)); opacity: 0.95; }
-        50% { filter: drop-shadow(0 0 10px var(--space-blue)) drop-shadow(0 0 25px rgba(0, 102, 255, 0.7)); opacity: 1; }
-      }
-      
-      .glow-cyan-text { animation: cyanGlow 3s ease-in-out infinite; }
-      .glow-blue-text { animation: blueGlow 4.5s ease-in-out infinite; }
-      
+ 
       /* Floating dust */
       @keyframes floatDust {
         0%, 100% { transform: translate(0, 0); }
-        50% { transform: translate(20px, -20px); }
+        50% { transform: translate(15px, -15px); }
       }
       .dust-cloud {
         animation: floatDust 12s ease-in-out infinite;
       }
       
-      /* Branding details */
+      /* Spaceship floating in background */
+      @keyframes spaceFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-8px) rotate(1deg); }
+      }
+      .cruiser-back {
+        animation: spaceFloat 8s ease-in-out infinite;
+        transform-origin: 425px 125px;
+        opacity: 0.18;
+      }
+
+      /* Word Motions and Parallax */
+      @keyframes floatTitle {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+      @keyframes floatSubtitle {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-2px); }
+      }
+      @keyframes floatRoles {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-1px); }
+      }
+      .title-group {
+        animation: floatTitle 6s ease-in-out infinite;
+      }
+      .subtitle-group {
+        animation: floatSubtitle 7s ease-in-out infinite;
+      }
+      .roles-group {
+        animation: floatRoles 8s ease-in-out infinite;
+      }
+
+      /* Bracket Sway */
+      @keyframes bracketMoveLeft {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(-6px); }
+      }
+      @keyframes bracketMoveRight {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(6px); }
+      }
+      .bracket-left {
+        animation: bracketMoveLeft 4s ease-in-out infinite;
+        transform-origin: 255px 140px;
+      }
+      .bracket-right {
+        animation: bracketMoveRight 4s ease-in-out infinite;
+        transform-origin: 595px 140px;
+      }
+
+      /* Glow pulses for branding */
+      @keyframes cyanGlow {
+        0%, 100% { filter: drop-shadow(0 0 3px var(--space-cyan)) drop-shadow(0 0 8px rgba(0, 240, 255, 0.3)); opacity: 0.95; }
+        50% { filter: drop-shadow(0 0 8px var(--space-cyan)) drop-shadow(0 0 20px rgba(0, 240, 255, 0.6)); opacity: 1; }
+      }
+      @keyframes blueGlow {
+        0%, 100% { filter: drop-shadow(0 0 3px var(--space-blue)) drop-shadow(0 0 8px rgba(0, 102, 255, 0.3)); opacity: 0.95; }
+        50% { filter: drop-shadow(0 0 8px var(--space-blue)) drop-shadow(0 0 20px rgba(0, 102, 255, 0.6)); opacity: 1; }
+      }
+      .glow-cyan-text { animation: cyanGlow 3s ease-in-out infinite; }
+      .glow-blue-text { animation: blueGlow 4.5s ease-in-out infinite; }
+
+      /* Branding details text styles */
       .title-text {
         font-family: 'Space Grotesk', sans-serif;
         font-weight: 700;
@@ -103,6 +154,19 @@
       <stop offset="60%" stop-color="#110033" stop-opacity="0.04" />
       <stop offset="100%" stop-color="#010103" stop-opacity="0" />
     </radialGradient>
+
+    <!-- Thruster fire gradient -->
+    <linearGradient id="thruster-glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0066ff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Typewriter text clip path -->
+    <clipPath id="typewriter-clip">
+      <rect x="290" y="160" width="0" height="40">
+        <animate attributeName="width" values="0; 0; 265; 265; 0" keyTimes="0; 0.1; 0.6; 0.9; 1" dur="4.5s" repeatCount="indefinite" />
+      </rect>
+    </clipPath>
   </defs>
 
   <!-- Solid Cosmic Black Backdrop -->
@@ -129,12 +193,8 @@
 
   <!-- Astro-Grid & Rotating Constellations Orbit Rings -->
   <g fill="none" stroke-width="0.8">
-    <!-- Orbital path 1 -->
     <circle cx="425" cy="140" r="130" class="rotating-orbit" stroke-dasharray="4, 10" />
-    <!-- Orbital path 2 -->
     <circle cx="425" cy="140" r="180" class="rotating-orbit-reverse" stroke-dasharray="10, 6" />
-    
-    <!-- Constellation Lines mapping -->
     <path d="M 120 70 L 160 110 L 210 190 M 700 80 L 720 110 L 780 180" stroke="rgba(0, 112, 243, 0.12)" />
   </g>
 
@@ -149,31 +209,89 @@
     <text x="635" y="138" font-family="'Fira Code', monospace" font-size="7" fill="var(--space-purple)" opacity="0.3">DEC_+48°14'</text>
   </g>
 
-  <!-- Main Digital Matrix Header Group -->
-  <g transform="translate(425, 140)" text-anchor="middle">
-    <!-- Glowing Spaceship/Console Title -->
-    <text class="title-text glow-cyan-text">
-      <tspan class="title-bracket glow-blue-text" fill="var(--space-blue)">&lt; </tspan>
-      <tspan fill="#ffffff">RAJU3114</tspan>
-      <tspan class="title-bracket glow-cyan-text" fill="var(--space-cyan)"> /&gt;</tspan>
-    </text>
+  <!-- ================= SLEEK BACKGROUND SPACESHIP ================= -->
+  <g class="cruiser-back">
+    <circle cx="425" cy="125" r="85" fill="none" stroke="rgba(0, 240, 255, 0.03)" stroke-width="1" stroke-dasharray="5, 5" />
+    <circle cx="425" cy="125" r="115" fill="none" stroke="rgba(0, 240, 255, 0.02)" stroke-width="1" />
     
-    <!-- Space Console Prompt -->
-    <text y="50" class="subtitle-text">
-      <tspan fill="var(--space-blue)">&gt; </tspan>
-      <tspan fill="#ffffff" letter-spacing="2px">SOFTWARE_ENGINEER_</tspan>
-    </text>
+    <!-- Engine Ion Flame (vibrating) -->
+    <path d="M 419 160 L 421 185 L 423 160 Z" fill="url(#thruster-glow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="0.12s" repeatCount="indefinite" />
+    </path>
+    <path d="M 427 160 L 429 185 L 431 160 Z" fill="url(#thruster-glow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="0.12s" repeatCount="indefinite" style="animation-delay: 0.06s;" />
+    </path>
+
+    <!-- Main Battleship Body -->
+    <path d="M 425 55 
+             L 431 92 
+             L 443 110 
+             L 443 135 
+             L 453 140 
+             L 448 160 
+             L 437 160 
+             L 434 150 
+             L 425 155 
+             L 416 150 
+             L 413 160 
+             L 402 160 
+             L 397 140 
+             L 407 135 
+             L 407 110 
+             L 419 92 Z" 
+          fill="#010105" stroke="rgba(0, 240, 255, 0.16)" stroke-width="1.2" />
+
+    <!-- Left Wing extension -->
+    <path d="M 407 110 L 345 142 L 350 152 L 397 138" fill="#010105" stroke="rgba(0, 240, 255, 0.12)" stroke-width="1" />
+    <!-- Right Wing extension -->
+    <path d="M 443 110 L 505 142 L 500 152 L 453 138" fill="#010105" stroke="rgba(0, 240, 255, 0.12)" stroke-width="1" />
+
+    <!-- Cockpit detailing -->
+    <path d="M 425 82 L 429 98 L 421 98 Z" fill="none" stroke="var(--space-cyan)" stroke-width="0.8" opacity="0.5" />
     
-    <!-- Subtitle Roles in space aesthetic -->
-    <text y="85" class="subtitle-text sub-roles">
-      <tspan fill="#4d5f80">[ </tspan>
-      <tspan fill="var(--space-blue)">JAVA_DEVELOPER</tspan>
-      <tspan fill="#4d5f80"> // </tspan>
-      <tspan fill="var(--space-cyan)">BACKEND_SYSTEMS</tspan>
-      <tspan fill="#4d5f80"> // </tspan>
-      <tspan fill="var(--space-purple)">AI_EXPLORER</tspan>
-      <tspan fill="#4d5f80"> ]</tspan>
-    </text>
+    <!-- Wingtip laser node points -->
+    <circle cx="345" cy="141" r="1.5" fill="var(--space-cyan)" filter="drop-shadow(0 0 2px var(--space-cyan))" />
+    <circle cx="505" cy="141" r="1.5" fill="var(--space-cyan)" filter="drop-shadow(0 0 2px var(--space-cyan))" />
+  </g>
+
+  <!-- ================= FRONTGROUND INTERACTIVE TEXT MATRIX ================= -->
+  <g>
+    <!-- Title Group -->
+    <g class="title-group" transform-origin="425px 145px">
+      <!-- Left Bracket -->
+      <text x="255" y="145" class="title-bracket glow-blue-text bracket-left" fill="var(--space-blue)">&lt;</text>
+      <!-- Main Name -->
+      <text x="425" y="145" class="title-text glow-cyan-text" text-anchor="middle">RAJU3114</text>
+      <!-- Right Bracket -->
+      <text x="595" y="145" class="title-bracket glow-cyan-text bracket-right" fill="var(--space-cyan)">/&gt;</text>
+    </g>
+    
+    <!-- Subtitle Group with typewriter animation -->
+    <g class="subtitle-group" transform-origin="425px 195px">
+      <g clip-path="url(#typewriter-clip)">
+        <text x="300" y="195" class="subtitle-text">
+          <tspan fill="var(--space-blue)">&gt; </tspan>
+          <tspan fill="#ffffff" letter-spacing="2px">SOFTWARE_ENGINEER</tspan>
+        </text>
+      </g>
+      <!-- Blinking Cursor -->
+      <text x="535" y="195" class="subtitle-text" fill="var(--space-cyan)">
+        <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />_
+      </text>
+    </g>
+    
+    <!-- Roles Group -->
+    <g class="roles-group" transform-origin="425px 230px">
+      <text x="425" y="230" class="subtitle-text sub-roles" text-anchor="middle">
+        <tspan fill="#4d5f80">[ </tspan>
+        <tspan fill="var(--space-blue)">JAVA_DEVELOPER</tspan>
+        <tspan fill="#4d5f80"> // </tspan>
+        <tspan fill="var(--space-cyan)">BACKEND_SYSTEMS</tspan>
+        <tspan fill="#4d5f80"> // </tspan>
+        <tspan fill="var(--space-purple)">AI_EXPLORER</tspan>
+        <tspan fill="#4d5f80"> ]</tspan>
+      </text>
+    </g>
   </g>
 
   <!-- Cosmic Borders -->
