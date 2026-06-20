@@ -1,0 +1,404 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 300" width="100%" height="100%">
+  <defs>
+    <!-- Import Google Fonts -->
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;family=Space+Grotesk:wght@700&amp;family=Orbitron:wght@800;900&amp;family=Oxanium:wght@700&amp;display=swap');
+      
+      :root {
+        --space-bg: #020617;
+        --space-blue: #1e6fff;
+        --space-cyan: #00d9ff;
+        --space-purple: #4aa3ff;
+        --space-text: #ffffff;
+      }
+      
+      .bg-space {
+        fill: var(--space-bg);
+      }
+      
+      /* Constellation and Orbit line animation */
+      @keyframes slowSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .rotating-orbit {
+        transform-origin: 425px 140px;
+        animation: slowSpin 50s linear infinite;
+        stroke: rgba(0, 240, 255, 0.08);
+      }
+      .rotating-orbit-reverse {
+        transform-origin: 425px 140px;
+        animation: slowSpin 70s linear infinite reverse;
+        stroke: rgba(122, 34, 255, 0.06);
+      }
+      
+      /* Glowing stars pulse */
+      @keyframes starPulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; filter: drop-shadow(0 0 4px var(--space-cyan)); }
+      }
+      .pulsing-star {
+        animation: starPulse 4s ease-in-out infinite;
+      }
+      .pulsing-star-delay {
+        animation: starPulse 5s ease-in-out infinite 2s;
+      }
+ 
+      /* Floating dust */
+      @keyframes floatDust {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(15px, -15px); }
+      }
+      .dust-cloud {
+        animation: floatDust 12s ease-in-out infinite;
+      }
+      
+      /* Mother-ship floating in background (very subtle) */
+      @keyframes spaceFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-8px) rotate(1deg); }
+      }
+      .cruiser-back {
+        animation: spaceFloat 8s ease-in-out infinite;
+        transform-origin: 425px 125px;
+        opacity: 0.06;
+      }
+
+      /* Running Spaceships Animations */
+      @keyframes shipRun1 {
+        0% { transform: translate(-120px, 40px) rotate(6deg) scale(0.6); opacity: 0; }
+        10% { opacity: 0.3; }
+        90% { opacity: 0.3; }
+        100% { transform: translate(920px, 120px) rotate(6deg) scale(0.6); opacity: 0; }
+      }
+      .bg-ship-1 {
+        animation: shipRun1 5s linear infinite;
+        transform-origin: center;
+      }
+
+      @keyframes shipRun2 {
+        0% { transform: translate(920px, 180px) rotate(186deg) scale(0.45); opacity: 0; }
+        15% { opacity: 0.25; }
+        85% { opacity: 0.25; }
+        100% { transform: translate(-120px, 90px) rotate(186deg) scale(0.45); opacity: 0; }
+      }
+      .bg-ship-2 {
+        animation: shipRun2 4s linear infinite 1s;
+        transform-origin: center;
+      }
+
+      /* Tumbling Asteroids Animations */
+      @keyframes asteroidRun1 {
+        0% { transform: translate(-60px, 20px) rotate(0deg) scale(0.5); opacity: 0; }
+        10% { opacity: 0.2; }
+        90% { opacity: 0.2; }
+        100% { transform: translate(900px, 200px) rotate(360deg) scale(0.5); opacity: 0; }
+      }
+      .bg-asteroid-1 {
+        animation: asteroidRun1 8s linear infinite;
+        transform-origin: center;
+      }
+
+      @keyframes asteroidRun2 {
+        0% { transform: translate(900px, 50px) rotate(360deg) scale(0.35); opacity: 0; }
+        10% { opacity: 0.15; }
+        90% { opacity: 0.15; }
+        100% { transform: translate(-60px, 230px) rotate(0deg) scale(0.35); opacity: 0; }
+      }
+      .bg-asteroid-2 {
+        animation: asteroidRun2 7s linear infinite 2s;
+        transform-origin: center;
+      }
+
+      /* Word Motions and Parallax */
+      @keyframes floatTitle {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+      }
+      @keyframes floatSubtitle {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+      }
+      .title-group {
+        animation: floatTitle 6s ease-in-out infinite;
+      }
+      .subtitle-group {
+        animation: floatSubtitle 7s ease-in-out infinite;
+      }
+
+      /* Bracket Sway */
+      @keyframes bracketMoveLeft {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(-6px); }
+      }
+      @keyframes bracketMoveRight {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(6px); }
+      }
+      .bracket-left {
+        animation: bracketMoveLeft 4s ease-in-out infinite;
+        transform-origin: 140px 145px;
+      }
+      .bracket-right {
+        animation: bracketMoveRight 4s ease-in-out infinite;
+        transform-origin: 710px 145px;
+      }
+
+      /* Glow pulses for branding */
+      @keyframes cyanGlow {
+        0%, 100% { filter: drop-shadow(0 0 4px var(--space-cyan)) drop-shadow(0 0 10px rgba(0, 240, 255, 0.4)); opacity: 0.95; }
+        50% { filter: drop-shadow(0 0 10px var(--space-cyan)) drop-shadow(0 0 25px rgba(0, 240, 255, 0.7)); opacity: 1; }
+      }
+      @keyframes blueGlow {
+        0%, 100% { filter: drop-shadow(0 0 4px var(--space-blue)) drop-shadow(0 0 10px rgba(0, 102, 255, 0.4)); opacity: 0.95; }
+        50% { filter: drop-shadow(0 0 10px var(--space-blue)) drop-shadow(0 0 25px rgba(0, 102, 255, 0.7)); opacity: 1; }
+      }
+      .glow-cyan-text { animation: cyanGlow 3s ease-in-out infinite; }
+      .glow-blue-text { animation: blueGlow 4.5s ease-in-out infinite; }
+
+      
+
+      @keyframes shipRun3 {
+        0% { transform: translate(-120px,220px) rotate(-12deg) scale(.5); opacity:0; }
+        15% { opacity:.4; }
+        85% { opacity:.4; }
+        100% { transform: translate(920px,80px) rotate(-12deg) scale(.5); opacity:0; }
+      }
+      .bg-ship-3 {
+        animation: shipRun3 6s linear infinite;
+        transform-origin:center;
+      }
+
+/* Branding details text styles */
+      .title-text {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900;
+        font-size: 58px;
+        fill: var(--space-text);
+        letter-spacing: 2px;
+      }
+      .title-bracket {
+        font-family: 'Fira Code', monospace;
+        font-weight: 700;
+        font-size: 54px;
+      }
+      .subtitle-text {
+        font-family: 'Fira Code', monospace;
+        font-weight: 700;
+        font-size: 23px;
+        fill: var(--space-cyan);
+        letter-spacing: 1.5px;
+      }
+    </style>
+    
+    <!-- Deep Space Nebula Gradients -->
+    <radialGradient id="nebula-blue" cx="30%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#00d9ff" stop-opacity="0.18" />
+      <stop offset="50%" stop-color="#4a005f" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#010103" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="nebula-purple" cx="70%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#1e6fff" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#551d00" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#010103" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Thruster fire gradients -->
+    <linearGradient id="thruster-glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e6fff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#00d9ff" stop-opacity="0" />
+    </linearGradient>
+    
+    <linearGradient id="running-thruster-glow" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#1e6fff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#00d9ff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Typewriter text clip path -->
+    <clipPath id="typewriter-clip">
+      <rect x="260" y="180" width="0" height="50">
+        <animate attributeName="width" values="0; 0; 330; 330; 0" keyTimes="0; 0.1; 0.6; 0.9; 1" dur="4.5s" repeatCount="indefinite" />
+      </rect>
+    </clipPath>
+  </defs>
+
+  <!-- Solid Cosmic Black Backdrop -->
+  <rect width="850" height="300" class="bg-space" />
+
+  <!-- Multi-layered Nebula Clouds -->
+  <rect width="850" height="300" fill="url(#nebula-blue)" />
+  <rect width="850" height="300" fill="url(#nebula-purple)" />
+  
+  <!-- Starfield background (Static & Pulsing Stars) -->
+  <g fill="#ffffff" opacity="0.6">
+    <circle cx="90" cy="60" r="1" opacity="0.5" />
+    <circle cx="210" cy="190" r="1.5" class="pulsing-star" />
+    <circle cx="150" cy="240" r="1" opacity="0.8" />
+    <circle cx="340" cy="50" r="1" class="pulsing-star-delay" />
+    <circle cx="410" cy="270" r="1.2" opacity="0.4" />
+    <circle cx="580" cy="65" r="1.5" class="pulsing-star" />
+    <circle cx="720" cy="110" r="1" opacity="0.9" />
+    <circle cx="780" cy="240" r="2" class="pulsing-star-delay" />
+    <circle cx="670" cy="220" r="1" opacity="0.5" />
+    <circle cx="50" cy="150" r="1.2" class="pulsing-star" />
+    <circle cx="810" cy="80" r="1" opacity="0.7" />
+  </g>
+
+  <!-- Astro-Grid & Rotating Constellations Orbit Rings -->
+  <g fill="none" stroke-width="0.8">
+    <circle cx="425" cy="140" r="130" class="rotating-orbit" stroke-dasharray="4, 10" />
+    <circle cx="425" cy="140" r="180" class="rotating-orbit-reverse" stroke-dasharray="10, 6" />
+    <path d="M 120 70 L 160 110 L 210 190 M 700 80 L 720 110 L 780 180" stroke="rgba(0, 112, 243, 0.12)" />
+  </g>
+
+  <!-- Vector Constellation Node Indicators -->
+  <g class="dust-cloud">
+    <circle cx="160" cy="110" r="3" fill="none" stroke="var(--space-cyan)" stroke-width="0.8" />
+    <line x1="160" y1="110" x2="185" y2="135" stroke="rgba(0, 240, 255, 0.15)" stroke-dasharray="2, 2" />
+    <text x="190" y="138" font-family="'Fira Code', monospace" font-size="7" fill="var(--space-cyan)" opacity="0.3">RA_03h11m</text>
+
+    <circle cx="720" cy="110" r="3" fill="none" stroke="var(--space-purple)" stroke-width="0.8" />
+    <line x1="720" y1="110" x2="695" y2="135" stroke="rgba(122, 34, 255, 0.15)" stroke-dasharray="2, 2" />
+    <text x="635" y="138" font-family="'Fira Code', monospace" font-size="7" fill="var(--space-purple)" opacity="0.3">DEC_+48°14'</text>
+  </g>
+
+  <!-- ================= SLEEK BACKGROUND MOTHER-SHIP (FLOATING) ================= -->
+  <g class="cruiser-back">
+    <circle cx="425" cy="125" r="85" fill="none" stroke="rgba(0, 240, 255, 0.03)" stroke-width="1" stroke-dasharray="5, 5" />
+    
+    <!-- Engine Ion Flame (vibrating) -->
+    <path d="M 419 160 L 421 185 L 423 160 Z" fill="url(#thruster-glow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="0.12s" repeatCount="indefinite" />
+    </path>
+    <path d="M 427 160 L 429 185 L 431 160 Z" fill="url(#thruster-glow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="0.12s" repeatCount="indefinite" style="animation-delay: 0.06s;" />
+    </path>
+
+    <!-- Main Battleship Body -->
+    <path d="M 425 55 
+             L 431 92 
+             L 443 110 
+             L 443 135 
+             L 453 140 
+             L 448 160 
+             L 437 160 
+             L 434 150 
+             L 425 155 
+             L 416 150 
+             L 413 160 
+             L 402 160 
+             L 397 140 
+             L 407 135 
+             L 407 110 
+             L 419 92 Z" 
+          fill="#010105" stroke="rgba(0, 240, 255, 0.16)" stroke-width="1.2" />
+
+    <!-- Wings -->
+    <path d="M 407 110 L 345 142 L 350 152 L 397 138" fill="#010105" stroke="rgba(0, 240, 255, 0.12)" stroke-width="1" />
+    <path d="M 443 110 L 505 142 L 500 152 L 453 138" fill="#010105" stroke="rgba(0, 240, 255, 0.12)" stroke-width="1" />
+  </g>
+
+  <!-- ================= RUNNING FIGHTER SHIP 1 (LEFT TO RIGHT) ================= -->
+  <g class="bg-ship-1">
+    <!-- Ion Engine Exhaust Plume -->
+    <path d="M -45 5 L -10 0 L -45 -5 Z" fill="url(#running-thruster-glow)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="0.08s" repeatCount="indefinite" />
+    </path>
+    <!-- Speed trail lines -->
+    <line x1="-80" y1="0" x2="-20" y2="0" stroke="rgba(0, 240, 255, 0.35)" stroke-width="1.5" stroke-dasharray="6,4" />
+    <!-- Fighter Body -->
+    <path d="M 20 0 L -15 8 L -9 0 L -15 -8 Z" fill="#010105" stroke="#00d9ff" stroke-width="1.5" />
+    <!-- Wings -->
+    <path d="M -5 0 L -12 14 L -8 0 Z" fill="#1e6fff" />
+    <path d="M -5 0 L -12 -14 L -8 0 Z" fill="#1e6fff" />
+  </g>
+
+  <!-- ================= RUNNING FIGHTER SHIP 2 (RIGHT TO LEFT) ================= -->
+  <g class="bg-ship-2">
+    <!-- Ion Engine Exhaust Plume -->
+    <path d="M -45 5 L -10 0 L -45 -5 Z" fill="url(#running-thruster-glow)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="0.08s" repeatCount="indefinite" />
+    </path>
+    <!-- Speed trail lines -->
+    <line x1="-80" y1="0" x2="-20" y2="0" stroke="rgba(0, 102, 255, 0.3)" stroke-width="1.2" stroke-dasharray="5,3" />
+    <!-- Fighter Body -->
+    <path d="M 20 0 L -15 8 L -9 0 L -15 -8 Z" fill="#010105" stroke="#00d9ff" stroke-width="1.5" />
+    <!-- Wings -->
+    <path d="M -5 0 L -12 14 L -8 0 Z" fill="#4aa3ff" />
+    <path d="M -5 0 L -12 -14 L -8 0 Z" fill="#4aa3ff" />
+  </g>
+
+  
+
+  <!-- ================= RUNNING FIGHTER SHIP 3 ================= -->
+  <g class="bg-ship-3">
+    <path d="M -55 6 L -10 0 L -55 -6 Z" fill="url(#running-thruster-glow)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="0.08s" repeatCount="indefinite" />
+    </path>
+
+    <line x1="-100" y1="0" x2="-20" y2="0"
+          stroke="rgba(255,107,0,0.35)"
+          stroke-width="1.5"
+          stroke-dasharray="8,5"/>
+
+    <path d="M 20 0 L -18 10 L -8 0 L -18 -10 Z"
+          fill="#090909"
+          stroke="#00d9ff"
+          stroke-width="1.5"/>
+  </g>
+
+<!-- ================= TUMBLING ASTEROID 1 (LEFT TO RIGHT) ================= -->
+  <g class="bg-asteroid-1">
+    <!-- Asteroid shape -->
+    <path d="M 0 8 L 10 0 L 22 4 L 26 15 L 16 26 L 4 21 Z" fill="#010105" stroke="rgba(255,43,214,0.45)" stroke-width="1.2" />
+    <!-- Craters -->
+    <circle cx="8" cy="10" r="1.5" fill="none" stroke="rgba(0, 240, 255, 0.15)" stroke-width="0.8" />
+    <circle cx="16" cy="15" r="2.5" fill="none" stroke="rgba(0, 240, 255, 0.15)" stroke-width="0.8" />
+  </g>
+
+  <!-- ================= TUMBLING ASTEROID 2 (RIGHT TO LEFT) ================= -->
+  <g class="bg-asteroid-2">
+    <!-- Asteroid shape -->
+    <path d="M 5 12 L 14 2 L 28 6 L 32 18 L 22 28 L 8 22 Z" fill="#010105" stroke="rgba(255,107,0,0.4)" stroke-width="1" />
+    <!-- Craters -->
+    <circle cx="12" cy="12" r="2" fill="none" stroke="rgba(122, 34, 255, 0.15)" stroke-width="0.8" />
+    <circle cx="22" cy="20" r="1.5" fill="none" stroke="rgba(122, 34, 255, 0.15)" stroke-width="0.8" />
+  </g>
+
+  <!-- ================= FRONTGROUND INTERACTIVE TEXT MATRIX ================= -->
+  <g>
+    <!-- Title Group (Enlarged) -->
+    <g class="title-group" transform-origin="425px 145px">
+      <!-- Left Bracket -->
+      <text x="140" y="145" class="title-bracket glow-blue-text bracket-left" fill="var(--space-blue)">&lt;</text>
+      <!-- Main Name (Enlarged Orbitron) -->
+      <text x="425" y="145" class="title-text glow-cyan-text" text-anchor="middle">M Rajkumar</text>
+      <!-- Right Bracket -->
+      <text x="710" y="145" class="title-bracket glow-cyan-text bracket-right" fill="var(--space-cyan)">/&gt;</text>
+    </g>
+    
+    <!-- Subtitle Group with typewriter animation (Enlarged and shifted down) -->
+    <g class="subtitle-group" transform-origin="425px 215px">
+      <g clip-path="url(#typewriter-clip)">
+        <text x="270" y="215" class="subtitle-text">
+          <tspan fill="var(--space-blue)">&gt; </tspan>
+          <tspan fill="#ffffff" letter-spacing="2px">SOFTWARE_ENGINEER</tspan>
+        </text>
+      </g>
+      <!-- Blinking Cursor -->
+      <text x="585" y="215" class="subtitle-text" fill="var(--space-cyan)">
+        <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite" />_
+      </text>
+    </g>
+  </g>
+
+  <!-- Cosmic Borders -->
+  <line x1="50" y1="30" x2="800" y2="30" stroke="rgba(0, 102, 255, 0.25)" stroke-width="1.2" />
+  <line x1="50" y1="270" x2="800" y2="270" stroke="rgba(0, 240, 255, 0.25)" stroke-width="1.2" />
+  
+  <text x="60" y="23" font-family="'Fira Code', monospace" font-size="9" fill="#4d5f80">MISSION: ACTIVE</text>
+  <text x="715" y="23" font-family="'Fira Code', monospace" font-size="9" fill="#4d5f80">ORBIT: RAJU_MATRIX</text>
+  
+  <text x="60" y="283" font-family="'Fira Code', monospace" font-size="9" fill="#4d5f80">NODE: github.com/Raju3114</text>
+  <text x="735" y="283" font-family="'Fira Code', monospace" font-size="9" fill="#4d5f80">STABLE_v2.0</text>
+</svg>
