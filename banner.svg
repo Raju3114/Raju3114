@@ -5,78 +5,73 @@
       @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;family=Space+Grotesk:wght@700&amp;display=swap');
       
       :root {
-        --color-bg: #040409;
-        --color-violet: #8a2be2;
-        --color-pink: #f43fa1;
-        --color-cyan: #00f0ff;
-        --color-text: #ffffff;
+        --space-bg: #010103;
+        --space-blue: #0066ff;
+        --space-cyan: #00f0ff;
+        --space-purple: #7a22ff;
+        --space-text: #ffffff;
       }
       
-      .bg-rect {
-        fill: var(--color-bg);
+      .bg-space {
+        fill: var(--space-bg);
       }
       
-      /* Grid scroll animation */
-      @keyframes gridScroll {
-        0% { transform: translateY(0); }
-        100% { transform: translateY(40px); }
+      /* Constellation & Orbit line animation */
+      @keyframes slowSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
-      .grid-pattern {
-        animation: gridScroll 3s linear infinite;
-        stroke: rgba(138, 43, 226, 0.15);
+      .rotating-orbit {
+        transform-origin: 425px 140px;
+        animation: slowSpin 50s linear infinite;
+        stroke: rgba(0, 240, 255, 0.08);
       }
-      
-      /* Glow pulses */
-      @keyframes violetPulse {
-        0%, 100% { filter: drop-shadow(0 0 3px var(--color-violet)) drop-shadow(0 0 8px var(--color-violet)); opacity: 0.95; }
-        50% { filter: drop-shadow(0 0 8px var(--color-violet)) drop-shadow(0 0 20px var(--color-violet)); opacity: 1; }
-      }
-      @keyframes cyanPulse {
-        0%, 100% { filter: drop-shadow(0 0 3px var(--color-cyan)) drop-shadow(0 0 8px var(--color-cyan)); opacity: 0.95; }
-        50% { filter: drop-shadow(0 0 8px var(--color-cyan)) drop-shadow(0 0 20px var(--color-cyan)); opacity: 1; }
-      }
-      @keyframes pinkPulse {
-        0%, 100% { filter: drop-shadow(0 0 3px var(--color-pink)) drop-shadow(0 0 8px var(--color-pink)); opacity: 0.95; }
-        50% { filter: drop-shadow(0 0 8px var(--color-pink)) drop-shadow(0 0 20px var(--color-pink)); opacity: 1; }
+      .rotating-orbit-reverse {
+        transform-origin: 425px 140px;
+        animation: slowSpin 70s linear infinite reverse;
+        stroke: rgba(122, 34, 255, 0.06);
       }
       
-      .glow-violet { animation: violetPulse 4s ease-in-out infinite; }
-      .glow-cyan { animation: cyanPulse 3s ease-in-out infinite; }
-      .glow-pink { animation: pinkPulse 3.5s ease-in-out infinite; }
+      /* Glowing stars pulse */
+      @keyframes starPulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; filter: drop-shadow(0 0 4px var(--space-cyan)); }
+      }
+      .pulsing-star {
+        animation: starPulse 4s ease-in-out infinite;
+      }
+      .pulsing-star-delay {
+        animation: starPulse 5s ease-in-out infinite 2s;
+      }
+
+      /* Glow pulses for branding */
+      @keyframes cyanGlow {
+        0%, 100% { filter: drop-shadow(0 0 4px var(--space-cyan)) drop-shadow(0 0 10px rgba(0, 240, 255, 0.4)); opacity: 0.95; }
+        50% { filter: drop-shadow(0 0 10px var(--space-cyan)) drop-shadow(0 0 25px rgba(0, 240, 255, 0.7)); opacity: 1; }
+      }
+      @keyframes blueGlow {
+        0%, 100% { filter: drop-shadow(0 0 4px var(--space-blue)) drop-shadow(0 0 10px rgba(0, 102, 255, 0.4)); opacity: 0.95; }
+        50% { filter: drop-shadow(0 0 10px var(--space-blue)) drop-shadow(0 0 25px rgba(0, 102, 255, 0.7)); opacity: 1; }
+      }
       
-      /* Floating background particles */
-      @keyframes float1 {
+      .glow-cyan-text { animation: cyanGlow 3s ease-in-out infinite; }
+      .glow-blue-text { animation: blueGlow 4.5s ease-in-out infinite; }
+      
+      /* Floating dust */
+      @keyframes floatDust {
         0%, 100% { transform: translate(0, 0); }
-        50% { transform: translate(25px, -30px); }
+        50% { transform: translate(20px, -20px); }
       }
-      @keyframes float2 {
-        0%, 100% { transform: translate(0, 0); }
-        50% { transform: translate(-30px, 20px); }
-      }
-      @keyframes float3 {
-        0%, 100% { transform: translate(0, 0); }
-        50% { transform: translate(20px, 25px); }
-      }
-      .floater-1 { animation: float1 8s ease-in-out infinite; }
-      .floater-2 { animation: float2 10s ease-in-out infinite; }
-      .floater-3 { animation: float3 9s ease-in-out infinite; }
-      
-      /* Typing blinker */
-      @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-      }
-      .cursor-blinker {
-        animation: blink 0.9s step-end infinite;
-        fill: var(--color-cyan);
+      .dust-cloud {
+        animation: floatDust 12s ease-in-out infinite;
       }
       
-      /* Text styling */
+      /* Branding details */
       .title-text {
         font-family: 'Space Grotesk', sans-serif;
         font-weight: 700;
         font-size: 52px;
-        fill: var(--color-text);
+        fill: var(--space-text);
         letter-spacing: 2px;
       }
       .title-bracket {
@@ -88,78 +83,106 @@
         font-family: 'Fira Code', monospace;
         font-weight: 500;
         font-size: 18px;
-        fill: var(--color-cyan);
+        fill: var(--space-cyan);
         letter-spacing: 1px;
       }
       .sub-roles {
         font-size: 14px;
-        fill: #80809b;
+        fill: #607090;
       }
     </style>
     
-    <!-- Grid Pattern -->
-    <pattern id="cyber-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" class="grid-pattern" stroke-width="1.2" />
-    </pattern>
+    <!-- Deep Space Nebula Gradients -->
+    <radialGradient id="nebula-blue" cx="30%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#0044cc" stop-opacity="0.18" />
+      <stop offset="50%" stop-color="#001144" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#010103" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="nebula-purple" cx="70%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#5500aa" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#110033" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#010103" stop-opacity="0" />
+    </radialGradient>
   </defs>
 
-  <!-- Background Rect -->
-  <rect width="850" height="300" class="bg-rect" />
+  <!-- Solid Cosmic Black Backdrop -->
+  <rect width="850" height="300" class="bg-space" />
 
-  <!-- Animated Cyber Grid Pattern Overlay -->
-  <rect width="850" height="300" fill="url(#cyber-grid)" />
+  <!-- Multi-layered Nebula Clouds -->
+  <rect width="850" height="300" fill="url(#nebula-blue)" />
+  <rect width="850" height="300" fill="url(#nebula-purple)" />
   
-  <!-- Subtle Gradient Glow from Bottom -->
-  <rect width="850" height="300" fill="none" style="mix-blend-mode: screen;">
-    <animate attributeName="opacity" values="0.2;0.3;0.2" dur="5s" repeatCount="indefinite" />
-  </rect>
-
-  <!-- Floating Glow Nodes in Background -->
-  <g opacity="0.3">
-    <circle cx="150" cy="80" r="4" fill="var(--color-cyan)" class="floater-1" />
-    <circle cx="200" cy="220" r="6" fill="var(--color-violet)" class="floater-2" />
-    <circle cx="700" cy="100" r="5" fill="var(--color-pink)" class="floater-3" />
-    <circle cx="600" cy="240" r="3" fill="var(--color-cyan)" class="floater-1" />
-    <circle cx="780" cy="180" r="8" fill="var(--color-violet)" class="floater-2" />
+  <!-- Starfield background (Static & Pulsing Stars) -->
+  <g fill="#ffffff" opacity="0.6">
+    <circle cx="90" cy="60" r="1" opacity="0.5" />
+    <circle cx="210" cy="190" r="1.5" class="pulsing-star" />
+    <circle cx="150" cy="240" r="1" opacity="0.8" />
+    <circle cx="340" cy="50" r="1" class="pulsing-star-delay" />
+    <circle cx="410" cy="270" r="1.2" opacity="0.4" />
+    <circle cx="580" cy="65" r="1.5" class="pulsing-star" />
+    <circle cx="720" cy="110" r="1" opacity="0.9" />
+    <circle cx="780" cy="240" r="2" class="pulsing-star-delay" />
+    <circle cx="670" cy="220" r="1" opacity="0.5" />
+    <circle cx="50" cy="150" r="1.2" class="pulsing-star" />
+    <circle cx="810" cy="80" r="1" opacity="0.7" />
   </g>
 
-  <!-- Main Terminal-Inspired Header Group -->
+  <!-- Astro-Grid & Rotating Constellations Orbit Rings -->
+  <g fill="none" stroke-width="0.8">
+    <!-- Orbital path 1 -->
+    <circle cx="425" cy="140" r="130" class="rotating-orbit" stroke-dasharray="4, 10" />
+    <!-- Orbital path 2 -->
+    <circle cx="425" cy="140" r="180" class="rotating-orbit-reverse" stroke-dasharray="10, 6" />
+    
+    <!-- Constellation Lines mapping -->
+    <path d="M 120 70 L 160 110 L 210 190 M 700 80 L 720 110 L 780 180" stroke="rgba(0, 112, 243, 0.12)" />
+  </g>
+
+  <!-- Vector Constellation Node Indicators -->
+  <g class="dust-cloud">
+    <circle cx="160" cy="110" r="3" fill="none" stroke="var(--space-cyan)" stroke-width="0.8" />
+    <line x1="160" y1="110" x2="185" y2="135" stroke="rgba(0, 240, 255, 0.15)" stroke-dasharray="2, 2" />
+    <text x="190" y="138" font-family="'Fira Code', monospace" font-size="7" fill="var(--space-cyan)" opacity="0.3">RA_03h11m</text>
+
+    <circle cx="720" cy="110" r="3" fill="none" stroke="var(--space-purple)" stroke-width="0.8" />
+    <line x1="720" y1="110" x2="695" y2="135" stroke="rgba(122, 34, 255, 0.15)" stroke-dasharray="2, 2" />
+    <text x="635" y="138" font-family="'Fira Code', monospace" font-size="7" fill="var(--space-purple)" opacity="0.3">DEC_+48°14'</text>
+  </g>
+
+  <!-- Main Digital Matrix Header Group -->
   <g transform="translate(425, 140)" text-anchor="middle">
-    <!-- Main Branding Title with brackets -->
-    <text class="title-text glow-pink">
-      <tspan class="title-bracket glow-violet" fill="var(--color-violet)">&lt; </tspan>
+    <!-- Glowing Spaceship/Console Title -->
+    <text class="title-text glow-cyan-text">
+      <tspan class="title-bracket glow-blue-text" fill="var(--space-blue)">&lt; </tspan>
       <tspan fill="#ffffff">RAJU3114</tspan>
-      <tspan class="title-bracket glow-cyan" fill="var(--color-cyan)"> /&gt;</tspan>
+      <tspan class="title-bracket glow-cyan-text" fill="var(--space-cyan)"> /&gt;</tspan>
     </text>
     
-    <!-- Console Prompt & Main Role -->
+    <!-- Space Console Prompt -->
     <text y="50" class="subtitle-text">
-      <tspan fill="var(--color-pink)">&gt; </tspan>
-      <tspan fill="#ffffff">SOFTWARE_ENGINEER_</tspan>
+      <tspan fill="var(--space-blue)">&gt; </tspan>
+      <tspan fill="#ffffff" letter-spacing="2px">COSMIC_ENGINEER_</tspan>
     </text>
     
-    <!-- Specific skills / subtitle tag lines -->
+    <!-- Subtitle Roles in space aesthetic -->
     <text y="85" class="subtitle-text sub-roles">
-      <tspan fill="#80809b">[ </tspan>
-      <tspan fill="var(--color-violet)">JAVA_DEVELOPER</tspan>
-      <tspan fill="#80809b"> // </tspan>
-      <tspan fill="var(--color-cyan)">BACKEND_SYSTEMS</tspan>
-      <tspan fill="#80809b"> // </tspan>
-      <tspan fill="var(--color-pink)">AI_EXPLORER</tspan>
-      <tspan fill="#80809b"> ]</tspan>
+      <tspan fill="#4d5f80">[ </tspan>
+      <tspan fill="var(--space-blue)">JAVA_DEVELOPER</tspan>
+      <tspan fill="#4d5f80"> // </tspan>
+      <tspan fill="var(--space-cyan)">BACKEND_SYSTEMS</tspan>
+      <tspan fill="#4d5f80"> // </tspan>
+      <tspan fill="var(--space-purple)">AI_EXPLORER</tspan>
+      <tspan fill="#4d5f80"> ]</tspan>
     </text>
   </g>
 
-  <!-- Cybernetic Border Lines & Tech Details -->
-  <line x1="50" y1="30" x2="800" y2="30" stroke="rgba(138, 43, 226, 0.2)" stroke-width="1" />
-  <line x1="50" y1="270" x2="800" y2="270" stroke="rgba(0, 255, 255, 0.2)" stroke-width="1" />
+  <!-- Cosmic Borders -->
+  <line x1="50" y1="30" x2="800" y2="30" stroke="rgba(0, 102, 255, 0.25)" stroke-width="1.2" />
+  <line x1="50" y1="270" x2="800" y2="270" stroke="rgba(0, 240, 255, 0.25)" stroke-width="1.2" />
   
-  <text x="60" y="23" font-family="'Fira Code', monospace" font-size="9" fill="#50506c">SYS_STATUS: READY</text>
-  <text x="730" y="23" font-family="'Fira Code', monospace" font-size="9" fill="#50506c">LOC: 0x3114_CORE</text>
+  <text x="60" y="23" font-family="'Fira Code', monospace" font-size="9" fill="#4d5f80">MISSION: ACTIVE</text>
+  <text x="715" y="23" font-family="'Fira Code', monospace" font-size="9" fill="#4d5f80">ORBIT: RAJU_MATRIX</text>
   
-  <text x="60" y="283" font-family="'Fira Code', monospace" font-size="9" fill="#50506c">HOST: github.com/Raju3114</text>
-  <text x="740" y="283" font-family="'Fira Code', monospace" font-size="9" fill="#50506c">v2.6.20_STABLE</text>
-
-  <!-- Blinking corner cursor -->
-  <rect x="801" y="265" width="8" height="6" class="cursor-blinker" />
+  <text x="60" y="283" font-family="'Fira Code', monospace" font-size="9" fill="#4d5f80">NODE: github.com/Raju3114</text>
+  <text x="735" y="283" font-family="'Fira Code', monospace" font-size="9" fill="#4d5f80">STABLE_v2.0</text>
 </svg>

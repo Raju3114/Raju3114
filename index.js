@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (menuToggle && navbarLinks) {
     menuToggle.addEventListener('click', () => {
       navbarLinks.classList.toggle('active-mobile');
-      // Simple toggle styling for mobile nav in JS or CSS
       if (navbarLinks.classList.contains('active-mobile')) {
         navbarLinks.style.display = 'flex';
         navbarLinks.style.flexDirection = 'column';
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Close menu on link click
     navbarLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         if (navbarLinks.classList.contains('active-mobile')) {
@@ -39,29 +37,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // 2. CANVAS PARTICLE BACKGROUND (With Mouse Repulsion)
+  // 2. CANVAS SPACE CONSTELLATION BACKGROUND (With Gravitational Lens Warping)
   const canvas = document.getElementById('particle-canvas');
   const ctx = canvas.getContext('2d');
 
-  let particlesArray = [];
+  let starsArray = [];
   let mouse = {
     x: null,
     y: null,
-    radius: 120
+    radius: 150 // Radius of gravitational lens
   };
 
-  // Adjust canvas size
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    initParticles();
+    initStars();
   }
   window.addEventListener('resize', resizeCanvas);
   
-  // Track mouse coordinates
   window.addEventListener('mousemove', (event) => {
-    mouse.x = event.x;
-    mouse.y = event.y;
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
   });
 
   window.addEventListener('mouseleave', () => {
@@ -69,131 +65,144 @@ document.addEventListener('DOMContentLoaded', () => {
     mouse.y = null;
   });
 
-  // Particle Class
-  class Particle {
+  // Star Class
+  class Star {
     constructor(x, y) {
       this.x = x;
       this.y = y;
-      this.size = Math.random() * 2 + 1;
-      // Normal float speeds
-      this.baseSpeedX = (Math.random() * 0.6) - 0.3;
-      this.baseSpeedY = (Math.random() * 0.6) - 0.3;
-      this.speedX = this.baseSpeedX;
-      this.speedY = this.baseSpeedY;
+      // Actual rendered position (incorporates lens warping)
+      this.renderX = x;
+      this.renderY = y;
       
-      // Store original coordinates for returning logic
-      this.originX = x;
-      this.originY = y;
-      this.density = (Math.random() * 30) + 15; // Mass / resistance
+      this.size = Math.random() * 2 + 0.5;
+      
+      // Floating celestial drift speed
+      this.speedX = (Math.random() * 0.2) - 0.1;
+      this.speedY = (Math.random() * 0.2) - 0.1;
+      
+      this.pulseSpeed = Math.random() * 0.02 + 0.01;
+      this.pulseValue = Math.random();
+      
+      // Deep space colors
+      this.colorType = Math.random();
     }
 
     draw() {
-      ctx.fillStyle = 'rgba(0, 255, 255, 0.4)';
-      // Some particles will match the primary or secondary neon theme
-      if (this.density > 40) {
-        ctx.fillStyle = 'rgba(138, 43, 226, 0.45)'; // Violet
-      } else if (this.density < 20) {
-        ctx.fillStyle = 'rgba(244, 63, 161, 0.45)'; // Pink
+      // Create glowing alpha
+      let alpha = 0.3 + Math.abs(Math.sin(this.pulseValue)) * 0.5;
+      
+      if (this.colorType > 0.6) {
+        ctx.fillStyle = `rgba(0, 240, 255, ${alpha})`; // Cyan Star
+      } else if (this.colorType > 0.2) {
+        ctx.fillStyle = `rgba(0, 112, 243, ${alpha})`; // Blue Star
+      } else {
+        ctx.fillStyle = `rgba(138, 43, 226, ${alpha})`; // Purple Nebula Star
       }
+
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      // Draw stars as glowing nodes
+      if (this.size > 2) {
+        ctx.arc(this.renderX, this.renderY, this.size * 1.5, 0, Math.PI * 2);
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = ctx.fillStyle;
+      } else {
+        ctx.arc(this.renderX, this.renderY, this.size, 0, Math.PI * 2);
+        ctx.shadowBlur = 0;
+      }
       ctx.closePath();
       ctx.fill();
     }
 
     update() {
-      // Mouse interaction (Repelling)
+      // Star float drift
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // Pulse value increment
+      this.pulseValue += this.pulseSpeed;
+
+      // Warp around screens
+      if (this.x < 0) this.x = canvas.width;
+      if (this.x > canvas.width) this.x = 0;
+      if (this.y < 0) this.y = canvas.height;
+      if (this.y > canvas.height) this.y = 0;
+
+      // Gravitational Lens Calculation
+      this.renderX = this.x;
+      this.renderY = this.y;
+
       if (mouse.x !== null && mouse.y !== null) {
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
         let distance = Math.sqrt(dx * dx + dy * dy);
-        
+
         if (distance < mouse.radius) {
-          let forceDirectionX = dx / distance;
-          let forceDirectionY = dy / distance;
-          
-          // The closer the mouse, the stronger the force pushing away
+          // Gravitational push factor (warping space around mouse)
           let force = (mouse.radius - distance) / mouse.radius;
-          let directionX = forceDirectionX * force * this.density * 0.5;
-          let directionY = forceDirectionY * force * this.density * 0.5;
           
-          // Repel particle (subtract direction since we want to push AWAY)
-          this.x -= directionX;
-          this.y -= directionY;
+          // Displace render coordinate away from mouse (gravitational lens)
+          this.renderX -= (dx / distance) * force * 45;
+          this.renderY -= (dy / distance) * force * 45;
         }
       }
-
-      // Smooth float drift
-      this.x += this.speedX;
-      this.y += this.speedY;
-
-      // Wrap around bounds
-      if (this.x < 0) {
-        this.x = canvas.width;
-      } else if (this.x > canvas.width) {
-        this.x = 0;
-      }
-      
-      if (this.y < 0) {
-        this.y = canvas.height;
-      } else if (this.y > canvas.height) {
-        this.y = 0;
-      }
     }
   }
 
-  // Populate particles
-  function initParticles() {
-    particlesArray = [];
-    // Adjust density based on screen width
-    let numberOfParticles = (canvas.width * canvas.height) / 10000;
-    numberOfParticles = Math.min(Math.max(numberOfParticles, 60), 150);
+  // Populate space starfield
+  function initStars() {
+    starsArray = [];
+    let numberOfStars = (canvas.width * canvas.height) / 9000;
+    numberOfStars = Math.min(Math.max(numberOfStars, 80), 160);
 
-    for (let i = 0; i < numberOfParticles; i++) {
+    for (let i = 0; i < numberOfStars; i++) {
       let x = Math.random() * canvas.width;
       let y = Math.random() * canvas.height;
-      particlesArray.push(new Particle(x, y));
+      starsArray.push(new Star(x, y));
     }
   }
 
-  // Draw lines connecting close particles
-  function connectParticles() {
-    let maxDistance = 100;
-    for (let a = 0; a < particlesArray.length; a++) {
-      for (let b = a; b < particlesArray.length; b++) {
-        let dx = particlesArray[a].x - particlesArray[b].x;
-        let dy = particlesArray[a].y - particlesArray[b].y;
+  // Connect constellation lines
+  function drawConstellations() {
+    let maxDistance = 110;
+    for (let a = 0; a < starsArray.length; a++) {
+      for (let b = a; b < starsArray.length; b++) {
+        let dx = starsArray[a].renderX - starsArray[b].renderX;
+        let dy = starsArray[a].renderY - starsArray[b].renderY;
         let distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < maxDistance) {
-          // Connect with translucent gradients/lines
-          let alpha = (maxDistance - distance) / maxDistance * 0.15;
-          ctx.strokeStyle = `rgba(138, 43, 226, ${alpha})`;
+          let alpha = (maxDistance - distance) / maxDistance * 0.12;
+          ctx.strokeStyle = `rgba(0, 112, 243, ${alpha})`;
           ctx.lineWidth = 0.8;
           ctx.beginPath();
-          ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-          ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+          ctx.moveTo(starsArray[a].renderX, starsArray[a].renderY);
+          ctx.lineTo(starsArray[b].renderX, starsArray[b].renderY);
           ctx.stroke();
         }
       }
     }
   }
 
-  // Animation Loop
+  // Animating Constellation Loop
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < particlesArray.length; i++) {
-      particlesArray[i].update();
-      particlesArray[i].draw();
+    // Reset shadow values for standard connections
+    ctx.shadowBlur = 0;
+    
+    for (let i = 0; i < starsArray.length; i++) {
+      starsArray[i].update();
+      starsArray[i].draw();
     }
-    connectParticles();
+    
+    ctx.shadowBlur = 0;
+    drawConstellations();
     requestAnimationFrame(animate);
   }
 
-  // Start Canvas
+  // Start Background
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  initParticles();
+  initStars();
   animate();
 
 
@@ -209,25 +218,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentWord = words[wordIndex];
     
     if (isDeleting) {
-      // Deleting character
       typewriterTarget.textContent = currentWord.substring(0, charIndex - 1);
       charIndex--;
-      typingSpeed = 50; // Deletes faster
+      typingSpeed = 50;
     } else {
-      // Adding character
       typewriterTarget.textContent = currentWord.substring(0, charIndex + 1);
       charIndex++;
-      typingSpeed = 100; // Normal typing speed
+      typingSpeed = 100;
     }
 
-    // Word complete
     if (!isDeleting && charIndex === currentWord.length) {
-      typingSpeed = 2000; // Pause at full word
+      typingSpeed = 2000;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       wordIndex = (wordIndex + 1) % words.length;
-      typingSpeed = 500; // Brief pause before typing next
+      typingSpeed = 500;
     }
 
     setTimeout(type, typingSpeed);
@@ -245,7 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('revealed');
-        // Once revealed, no need to observe again
         observer.unobserve(entry.target);
       }
     });
@@ -270,26 +275,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const cardWidth = cardRect.width;
       const cardHeight = cardRect.height;
       
-      // Mouse coordinate inside the card
       const mouseX = e.clientX - cardRect.left;
       const mouseY = e.clientY - cardRect.top;
       
-      // Calculate rotate angles (max 10 degrees)
       const rotateX = ((cardHeight / 2 - mouseY) / (cardHeight / 2)) * 8;
       const rotateY = ((mouseX - cardWidth / 2) / (cardWidth / 2)) * 8;
       
-      // Apply transforms
       innerCard.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
     });
 
     card.addEventListener('mouseleave', () => {
-      // Smoothly reset transformations
       innerCard.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
       innerCard.style.transition = 'transform 0.5s ease-out';
     });
     
     card.addEventListener('mouseenter', () => {
-      // Remove transitions temporarily during hover for reactive movement
       innerCard.style.transition = 'none';
     });
   });
@@ -306,13 +306,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const submitBtn = document.getElementById('form-submit-btn');
       const submitText = submitBtn.querySelector('.btn-text');
       
-      // Disable form buttons & inputs during simulation
       submitBtn.disabled = true;
       submitText.textContent = 'CONNECTING...';
       formStatusLog.className = 'form-status-log';
       formStatusLog.innerHTML = `<span class="c-prompt">guest@raju3114:~$</span> ping -c 3 mail-server.local`;
 
-      // Simulating connection steps
       setTimeout(() => {
         formStatusLog.innerHTML += `<br>64 bytes from mail-server.local: icmp_seq=1 ttl=64 time=0.045 ms`;
       }, 400);
@@ -326,15 +324,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1200);
 
       setTimeout(() => {
-        // Success execution
         formStatusLog.classList.add('success');
         formStatusLog.innerHTML = `<span class="c-prompt">system@raju3114:~$</span> [SUCCESS] Message transmitted successfully to raj3114kumar@gmail.com!`;
         
-        // Reset button
         submitBtn.disabled = false;
         submitText.textContent = 'TRANSMIT_MESSAGE';
-        
-        // Clear inputs
         contactForm.reset();
       }, 1800);
     });
@@ -350,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.clientHeight;
-      if (pageYOffset >= (sectionTop - 200)) {
+      if (window.pageYOffset >= (sectionTop - 200)) {
         currentSection = section.getAttribute('id');
       }
     });

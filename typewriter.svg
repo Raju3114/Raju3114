@@ -7,20 +7,20 @@
         font-family: 'Fira Code', 'Courier New', monospace;
         font-size: 14px;
         font-weight: 500;
-        fill: #a6accd;
+        fill: #94a3b8;
       }
       
       .prompt-user {
-        fill: #00f0ff;
+        fill: #0066ff;
         font-weight: 700;
       }
       
       .prompt-host {
-        fill: #f43fa1;
+        fill: #00f0ff;
       }
       
       .prompt-symbol {
-        fill: #8a2be2;
+        fill: #7a22ff;
       }
 
       .message-text {
@@ -60,14 +60,14 @@
     </clipPath>
   </defs>
 
-  <!-- Background container styled as translucent glass terminal -->
-  <rect width="100%" height="100%" fill="#05050a" rx="6" stroke="#1d1d2b" stroke-width="1.2" />
+  <!-- Background container styled as deep-space terminal -->
+  <rect width="100%" height="100%" fill="#010103" rx="6" stroke="#0066ff" stroke-opacity="0.25" stroke-width="1.2" />
 
   <!-- Terminal Header / Prompt Line -->
   <text x="15" y="30" class="terminal-text">
     <tspan class="prompt-user">guest</tspan>
     <tspan class="prompt-symbol">@</tspan>
-    <tspan class="prompt-host">raju3114-digital</tspan>
+    <tspan class="prompt-host">raju3114-orbit</tspan>
     <tspan class="prompt-symbol">:~$</tspan>
     <tspan fill="#ffffff"> cat welcome_handshake.sh</tspan>
   </text>
