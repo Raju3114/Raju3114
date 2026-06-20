@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 300" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 360" width="100%" height="100%">
   <defs>
     <style type="text/css">
-      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&amp;family=Space+Grotesk:wght@700&amp;display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&amp;family=Orbitron:wght@700;900&amp;family=Oxanium:wght@600;800&amp;display=swap');
       
       :root {
         --bg-color: #010103;
@@ -13,52 +13,65 @@
       
       .panel-frame {
         fill: var(--bg-color);
-        stroke: rgba(0, 102, 255, 0.25);
-        stroke-width: 1.2;
+        stroke: rgba(0, 102, 255, 0.35);
+        stroke-width: 1.5;
+        filter: drop-shadow(0 0 10px rgba(0, 102, 255, 0.15));
       }
       
+      .font-space-title {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900;
+        font-size: 16px;
+        fill: var(--color-bright);
+        letter-spacing: 1.5px;
+        filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.3));
+      }
+
       .mono-text {
         font-family: 'Fira Code', monospace;
-        font-size: 13px;
+        font-size: 14px;
         fill: #94a3b8;
       }
       
       .bold-tag {
-        font-weight: 700;
+        font-family: 'Oxanium', sans-serif;
+        font-weight: 800;
+        font-size: 15px;
         fill: var(--color-bright);
+        letter-spacing: 0.5px;
       }
       
       /* Level Bar Fills Glowing CSS */
       @keyframes meterPulse {
-        0%, 100% { filter: drop-shadow(0 0 3px var(--color-cyan)); opacity: 0.9; }
-        50% { filter: drop-shadow(0 0 8px var(--color-cyan)); opacity: 1; }
+        0%, 100% { filter: drop-shadow(0 0 3px var(--color-cyan)); opacity: 0.95; }
+        50% { filter: drop-shadow(0 0 10px var(--color-cyan)); opacity: 1; }
       }
       .glow-fill {
         fill: var(--color-cyan);
         animation: meterPulse 3s ease-in-out infinite;
       }
-      
-      @keyframes meterPulseBlue {
-        0%, 100% { filter: drop-shadow(0 0 3px var(--color-blue)); opacity: 0.9; }
-        50% { filter: drop-shadow(0 0 8px var(--color-blue)); opacity: 1; }
+
+      /* Animated label text glow */
+      @keyframes textGlowPulse {
+        0%, 100% { fill: var(--color-cyan); filter: drop-shadow(0 0 2px var(--color-cyan)); }
+        50% { fill: var(--color-bright); filter: drop-shadow(0 0 6px var(--color-cyan)); }
       }
-      .glow-fill-blue {
-        fill: var(--color-blue);
-        animation: meterPulseBlue 4s ease-in-out infinite;
+      .glow-text-active {
+        animation: textGlowPulse 4s ease-in-out infinite;
       }
 
       /* LED status blinks */
       @keyframes ledBlinkGreen {
-        0%, 100% { fill: #00ff66; filter: drop-shadow(0 0 3px #00ff66); }
-        50% { fill: #006622; filter: none; }
+        0%, 100% { fill: #00ff66; filter: drop-shadow(0 0 4px #00ff66); }
+        50% { fill: #005511; filter: none; }
       }
       .led-green {
         animation: ledBlinkGreen 1.5s infinite;
       }
       
       @keyframes ledBlinkBlue {
-        0%, 100% { fill: #00f0ff; filter: drop-shadow(0 0 3px #00f0ff); }
-        50% { fill: #004455; filter: none; }
+        0%, 100% { fill: #00f0ff; filter: drop-shadow(0 0 4px #00f0ff); }
+        50% { fill: #003355; filter: none; }
       }
       .led-blue {
         animation: ledBlinkBlue 2s infinite;
@@ -70,14 +83,14 @@
         100% { transform: rotate(360deg); }
       }
       .dial-ring {
-        transform-origin: 720px 145px;
+        transform-origin: 730px 175px;
         animation: dialSpin 12s linear infinite;
-        stroke: rgba(0, 102, 255, 0.2);
+        stroke: rgba(0, 102, 255, 0.25);
       }
       .dial-ring-fast {
-        transform-origin: 720px 145px;
+        transform-origin: 730px 175px;
         animation: dialSpin 6s linear infinite reverse;
-        stroke: rgba(0, 240, 255, 0.15);
+        stroke: rgba(0, 240, 255, 0.2);
       }
       
       /* Swinging gauge needle */
@@ -86,108 +99,106 @@
         50% { transform: rotate(45deg); }
       }
       .dial-needle {
-        transform-origin: 720px 145px;
+        transform-origin: 730px 175px;
         animation: needleSwing 5s ease-in-out infinite;
         stroke: var(--color-cyan);
-        stroke-width: 2;
-        filter: drop-shadow(0 0 2px var(--color-cyan));
+        stroke-width: 2.2;
+        filter: drop-shadow(0 0 3px var(--color-cyan));
       }
     </style>
 
     <!-- Linear Gradients for bar meters -->
     <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0066ff" />
+      <stop offset="0%" stop-color="#0055ff" />
       <stop offset="100%" stop-color="#00f0ff" />
     </linearGradient>
   </defs>
 
   <!-- Base Panel -->
-  <rect width="850" height="300" rx="8" class="panel-frame" />
+  <rect width="850" height="360" rx="8" class="panel-frame" />
 
   <!-- Section Title -->
-  <text x="25" y="35" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" fill="var(--color-bright)" letter-spacing="1">
+  <text x="25" y="40" class="font-space-title">
     SYS_MONITOR // SPACECRAFT_DASHBOARD
   </text>
-  <line x1="25" y1="45" x2="520" y2="45" stroke="rgba(0, 102, 255, 0.2)" stroke-width="1" />
+  <line x1="25" y1="52" x2="520" y2="52" stroke="rgba(0, 102, 255, 0.25)" stroke-width="1.2" />
 
-  <!-- Left Column: monospaced dials and meters -->
-  <g transform="translate(25, 75)" class="mono-text">
+  <!-- Left Column: monospaced dials and meters (Larger and Pulsing) -->
+  <g transform="translate(25, 85)" class="mono-text">
     
     <!-- Engine / Java -->
     <text y="0" class="bold-tag">ENGINE // CORE</text>
-    <text x="0" y="20">JAVA_17</text>
-    <!-- Background track -->
-    <rect x="100" y="9" width="300" height="12" rx="2" fill="rgba(255, 255, 255, 0.05)" />
-    <!-- Glowing fill -->
-    <rect x="100" y="9" width="285" height="12" rx="2" fill="url(#cyan-grad)" class="glow-fill" />
-    <text x="415" y="20" class="bold-tag" fill="var(--color-cyan)">95% [STABLE]</text>
+    <text x="0" y="22">JAVA_17</text>
+    <rect x="110" y="9" width="290" height="15" rx="3" fill="rgba(255, 255, 255, 0.05)" />
+    <rect x="110" y="9" width="275" height="15" rx="3" fill="url(#cyan-grad)" class="glow-fill" />
+    <text x="415" y="22" class="bold-tag glow-text-active">95% [STABLE]</text>
 
     <!-- Database / MySQL -->
-    <text y="60" class="bold-tag">DATABASE // STORE</text>
-    <text x="0" y="80">MYSQL_DBMS</text>
-    <rect x="100" y="69" width="300" height="12" rx="2" fill="rgba(255, 255, 255, 0.05)" />
-    <rect x="100" y="69" width="270" height="12" rx="2" fill="url(#cyan-grad)" class="glow-fill" />
-    <text x="415" y="80" class="bold-tag" fill="var(--color-cyan)">90% [ACTIVE]</text>
+    <text y="65" class="bold-tag">DATABASE // STORE</text>
+    <text x="0" y="87">MYSQL_DBMS</text>
+    <rect x="110" y="74" width="290" height="15" rx="3" fill="rgba(255, 255, 255, 0.05)" />
+    <rect x="110" y="74" width="261" height="15" rx="3" fill="url(#cyan-grad)" class="glow-fill" />
+    <text x="415" y="87" class="bold-tag glow-text-active" style="animation-delay: 1s;">90% [ACTIVE]</text>
 
     <!-- Systems / DSA -->
-    <text y="120" class="bold-tag">LOGIC // ARCHITECTURE</text>
-    <text x="0" y="140">DSA_OOP</text>
-    <rect x="100" y="129" width="300" height="12" rx="2" fill="rgba(255, 255, 255, 0.05)" />
-    <rect x="100" y="129" width="255" height="12" rx="2" fill="url(#cyan-grad)" class="glow-fill" />
-    <text x="415" y="140" class="bold-tag" fill="var(--color-cyan)">85% [LOADED]</text>
+    <text y="130" class="bold-tag">LOGIC // ARCHITECTURE</text>
+    <text x="0" y="152">DSA_OOP</text>
+    <rect x="110" y="139" width="290" height="15" rx="3" fill="rgba(255, 255, 255, 0.05)" />
+    <rect x="110" y="139" width="246" height="15" rx="3" fill="url(#cyan-grad)" class="glow-fill" />
+    <text x="415" y="152" class="bold-tag glow-text-active" style="animation-delay: 2s;">85% [LOADED]</text>
 
     <!-- Tools / Git -->
-    <text y="180" class="bold-tag">VERSION // DEPLOY</text>
-    <text x="0" y="200">GIT_MAVEN</text>
-    <rect x="100" y="189" width="300" height="12" rx="2" fill="rgba(255, 255, 255, 0.05)" />
-    <rect x="100" y="189" width="255" height="12" rx="2" fill="url(#cyan-grad)" class="glow-fill" />
-    <text x="415" y="200" class="bold-tag" fill="var(--color-cyan)">85% [SYNCED]</text>
+    <text y="195" class="bold-tag">VERSION // DEPLOY</text>
+    <text x="0" y="217">GIT_MAVEN</text>
+    <rect x="110" y="204" width="290" height="15" rx="3" fill="rgba(255, 255, 255, 0.05)" />
+    <rect x="110" y="204" width="246" height="15" rx="3" fill="url(#cyan-grad)" class="glow-fill" />
+    <text x="415" y="217" class="bold-tag glow-text-active" style="animation-delay: 3s;">85% [SYNCED]</text>
   </g>
 
   <!-- Middle: Indicator LEDs -->
-  <g transform="translate(540, 30)">
-    <rect width="100" height="240" rx="4" fill="rgba(0, 102, 255, 0.03)" stroke="rgba(0, 102, 255, 0.15)" stroke-width="1" />
+  <g transform="translate(540, 40)">
+    <rect width="110" height="280" rx="6" fill="rgba(0, 102, 255, 0.04)" stroke="rgba(0, 102, 255, 0.2)" stroke-width="1.2" />
     
-    <text x="50" y="25" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="11" font-weight="700" fill="var(--color-bright)" letter-spacing="0.5">CONSOLE</text>
-    <line x1="15" y1="35" x2="85" y2="35" stroke="rgba(0, 102, 255, 0.15)" stroke-width="0.8" />
+    <text x="55" y="28" text-anchor="middle" font-family="'Orbitron', sans-serif" font-size="12" font-weight="900" fill="var(--color-bright)" letter-spacing="0.5">CONSOLE</text>
+    <line x1="15" y1="38" x2="95" y2="38" stroke="rgba(0, 102, 255, 0.2)" stroke-width="1" />
     
     <!-- LED 1 -->
-    <circle cx="25" cy="70" r="6" fill="#00ff66" class="led-green" />
-    <text x="40" y="74" font-family="monospace" font-size="10" fill="#ffffff">SYS_OK</text>
+    <circle cx="28" cy="80" r="7" fill="#00ff66" class="led-green" />
+    <text x="45" y="84" font-family="monospace" font-size="11" fill="#ffffff" font-weight="bold">SYS_OK</text>
 
     <!-- LED 2 -->
-    <circle cx="25" cy="110" r="6" fill="#00f0ff" class="led-blue" />
-    <text x="40" y="114" font-family="monospace" font-size="10" fill="#ffffff">NET_ON</text>
+    <circle cx="28" cy="125" r="7" fill="#00f0ff" class="led-blue" />
+    <text x="45" y="129" font-family="monospace" font-size="11" fill="#ffffff" font-weight="bold">NET_ON</text>
 
     <!-- LED 3 -->
-    <circle cx="25" cy="150" r="6" fill="#00ff66" class="led-green" />
-    <text x="40" y="154" font-family="monospace" font-size="10" fill="#ffffff">DB_SYNC</text>
+    <circle cx="28" cy="170" r="7" fill="#00ff66" class="led-green" />
+    <text x="45" y="174" font-family="monospace" font-size="11" fill="#ffffff" font-weight="bold">DB_SYNC</text>
 
     <!-- LED 4 -->
-    <circle cx="25" cy="190" r="6" fill="#00f0ff" class="led-blue" />
-    <text x="40" y="194" font-family="monospace" font-size="10" fill="#ffffff">THR_SAFE</text>
+    <circle cx="28" cy="215" r="7" fill="#00f0ff" class="led-blue" />
+    <text x="45" y="219" font-family="monospace" font-size="11" fill="#ffffff" font-weight="bold">THR_SAFE</text>
     
-    <text x="50" y="225" text-anchor="middle" font-family="monospace" font-size="9" fill="var(--color-cyan)" font-weight="bold">ONLINE ●</text>
+    <text x="55" y="260" text-anchor="middle" font-family="monospace" font-size="11" fill="var(--color-cyan)" font-weight="bold" class="glow-text-active">ONLINE ●</text>
   </g>
 
   <!-- Right Side: Rotating dials and gauges -->
-  <g transform="translate(0, 0)">
+  <g transform="translate(0, 30)">
     <!-- Dial borders -->
-    <circle cx="740" cy="150" r="65" fill="none" stroke="rgba(0, 102, 255, 0.1)" stroke-width="1.5" />
-    <circle cx="740" cy="150" r="50" fill="none" stroke="rgba(0, 102, 255, 0.1)" stroke-width="1" stroke-dasharray="1, 4" />
+    <circle cx="730" cy="145" r="65" fill="none" stroke="rgba(0, 102, 255, 0.15)" stroke-width="1.5" />
+    <circle cx="730" cy="145" r="50" fill="none" stroke="rgba(0, 102, 255, 0.1)" stroke-width="1" stroke-dasharray="1, 4" />
     
     <!-- Rotating indices -->
-    <circle cx="740" cy="150" r="60" fill="none" class="dial-ring" stroke-width="1.2" stroke-dasharray="8, 20" />
-    <circle cx="740" cy="150" r="40" fill="none" class="dial-ring-fast" stroke-width="0.8" stroke-dasharray="2, 8" />
+    <circle cx="730" cy="145" r="60" fill="none" class="dial-ring" stroke-width="1.2" stroke-dasharray="8, 20" />
+    <circle cx="730" cy="145" r="40" fill="none" class="dial-ring-fast" stroke-width="0.8" stroke-dasharray="2, 8" />
     
     <!-- Dial tick indicators -->
-    <path d="M 740 90 L 740 96 M 740 204 L 740 210 M 680 150 L 686 150 M 794 150 L 800 150" stroke="rgba(0, 240, 255, 0.25)" stroke-width="1.2" />
+    <path d="M 730 85 L 730 91 M 730 199 L 730 205 M 670 145 L 676 145 M 784 145 L 790 145" stroke="rgba(0, 240, 255, 0.25)" stroke-width="1.2" />
 
     <!-- Swinging needle -->
-    <line x1="740" y1="150" x2="740" y2="105" class="dial-needle" />
-    <circle cx="740" cy="150" r="4" fill="var(--color-bright)" stroke="var(--color-blue)" stroke-width="1" />
+    <line x1="730" y1="145" x2="730" y2="100" class="dial-needle" />
+    <circle cx="730" cy="145" r="5" fill="var(--color-bright)" stroke="var(--color-blue)" stroke-width="1" />
 
     <!-- Readout text -->
-    <text x="740" y="240" text-anchor="middle" font-family="'Fira Code', monospace" font-size="9" fill="#4d5f80">VECTOR_THRUST_MON</text>
+    <text x="730" y="240" text-anchor="middle" font-family="'Fira Code', monospace" font-size="9" fill="#4d5f80">VECTOR_THRUST_MON</text>
   </g>
 </svg>

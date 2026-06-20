@@ -1,22 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 100" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 150" width="100%" height="100%">
   <defs>
     <style type="text/css">
       @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;display=swap');
       
-      .terminal-text {
+      .terminal-frame {
+        fill: #010103;
+        stroke: rgba(0, 102, 255, 0.35);
+        stroke-width: 1.5;
+        filter: drop-shadow(0 0 8px rgba(0, 102, 255, 0.15));
+      }
+      
+      .header-bg {
+        fill: rgba(0, 0, 0, 0.4);
+        stroke: rgba(0, 102, 255, 0.15);
+        stroke-width: 0.8;
+      }
+
+      .term-btn {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      .text-base {
         font-family: 'Fira Code', 'Courier New', monospace;
-        font-size: 14px;
-        font-weight: 500;
+        font-size: 18px;
+        font-weight: 700;
+        fill: #ffffff;
+      }
+      
+      .text-prompt {
+        font-size: 15px;
         fill: #94a3b8;
+        font-weight: 500;
       }
       
       .prompt-user {
-        fill: #0066ff;
+        fill: #00f0ff;
         font-weight: 700;
       }
       
       .prompt-host {
-        fill: #00f0ff;
+        fill: #0066ff;
       }
       
       .prompt-symbol {
@@ -25,6 +50,7 @@
 
       .message-text {
         fill: #ffffff;
+        filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.4));
       }
 
       /* Typewriter Animation using clip-path */
@@ -34,13 +60,13 @@
       }
       
       .typed-rect {
-        animation: typeText 4.5s steps(55, end) 1.5s forwards;
+        animation: typeText 4.5s steps(48, end) 1.5s forwards;
       }
 
       /* Cursor movement matching typewriter steps */
       @keyframes moveCursor {
         from { transform: translateX(0px); }
-        to { transform: translateX(530px); }
+        to { transform: translateX(545px); }
       }
       
       @keyframes blinkCursor {
@@ -50,35 +76,46 @@
 
       .cursor {
         fill: #00f0ff;
-        animation: moveCursor 4.5s steps(55, end) 1.5s forwards, blinkCursor 0.8s infinite;
+        animation: moveCursor 4.5s steps(48, end) 1.5s forwards, blinkCursor 0.8s infinite;
+        filter: drop-shadow(0 0 3px #00f0ff);
       }
     </style>
 
     <!-- Clip Path for typing effect -->
     <clipPath id="typing-clip">
-      <rect x="15" y="45" width="0" height="30" class="typed-rect" />
+      <rect x="25" y="90" width="0" height="35" class="typed-rect" />
     </clipPath>
   </defs>
 
   <!-- Background container styled as deep-space terminal -->
-  <rect width="100%" height="100%" fill="#010103" rx="6" stroke="#0066ff" stroke-opacity="0.25" stroke-width="1.2" />
+  <rect width="850" height="150" rx="8" class="terminal-frame" />
 
-  <!-- Terminal Header / Prompt Line -->
-  <text x="15" y="30" class="terminal-text">
+  <!-- Terminal Header Bar -->
+  <rect x="1" y="1" width="848" height="34" rx="7" class="header-bg" />
+  
+  <!-- Window control buttons -->
+  <circle cx="20" cy="18" r="5" fill="#ff5f56" />
+  <circle cx="36" cy="18" r="5" fill="#ffbd2e" />
+  <circle cx="52" cy="18" r="5" fill="#27c93f" />
+  
+  <text x="425" y="22" font-family="'Fira Code', monospace" font-size="11" fill="#4d5f80" text-anchor="middle" font-weight="700">raju3114@welcome-core:~</text>
+
+  <!-- Terminal Command Prompt Line -->
+  <text x="25" y="68" class="text-prompt">
     <tspan class="prompt-user">guest</tspan>
     <tspan class="prompt-symbol">@</tspan>
     <tspan class="prompt-host">raju3114-orbit</tspan>
     <tspan class="prompt-symbol">:~$</tspan>
-    <tspan fill="#ffffff"> cat welcome_handshake.sh</tspan>
+    <tspan fill="#ffffff"> ./connect_handshake.sh</tspan>
   </text>
 
-  <!-- Typed Message Line with clip path -->
+  <!-- Typed Message Line (Bigger Font, Glowing) -->
   <g clip-path="url(#typing-clip)">
-    <text x="15" y="65" class="terminal-text message-text">
-      Hi, I'm Raju — Java Developer, systems builder &amp; ML student.
+    <text x="25" y="112" class="text-base message-text">
+      Hello, I'm Raju — Java &amp; Backend System Engineer.
     </text>
   </g>
 
   <!-- Blinking Cursor that travels at the end of text -->
-  <rect x="542" y="53" width="8" height="15" class="cursor" />
+  <rect x="562" y="94" width="10" height="20" class="cursor" />
 </svg>
