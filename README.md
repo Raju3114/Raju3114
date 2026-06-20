@@ -23,11 +23,9 @@
 
 I am a **Software Engineer** specializing in transaction-safe backend services, scalable object-oriented systems, and machine learning models. I focus on developing clean, well-architected software and analyzing the intersections of Graph Deep Learning and Quantum computing.
 
-- ⚙️ **Core Focus:** Java Scalability, Relational Databases, and Quantum ML.
-- 🚀 **Philosophy:** Writing clean, thread-safe, and self-documenting code.
-- 🧠 **Learning:** Distributed computing systems and reactive programming.
-
-<br>
+<p align="center">
+  <img src="./about_bullets.svg" alt="Core Focus, Philosophy, and Learning Logs" width="100%" />
+</p>
 
 <p align="center">
   <img src="./about.svg" alt="Engineering Logs System Readout" width="100%" />
@@ -39,13 +37,9 @@ I am a **Software Engineer** specializing in transaction-safe backend services, 
 
 ### 🛠️ Tech Stack & Skills
 
-* ☕ **Backend Engine:** Java 17, JDBC Interfaces, Python
-* 🗄 **Database Systems:** MySQL, Relational DBMS design, query structures
-* ⚡ **Systems Core:** Data Structures & Algorithms (DSA), Object-Oriented Design (OOD)
-* ⚛️ **Frontend Layers:** React, TypeScript, HTML5, CSS3, ES6
-* ⚙️ **Tools & Build:** Git / GitHub, Maven build systems, PyTorch
-
-<br>
+<p align="center">
+  <img src="./tech_stack.svg" alt="Core Engineering Suite Readout" width="100%" />
+</p>
 
 <p align="center">
   <img src="./skills.svg" alt="Spacecraft Systems Dashboard" width="100%" />
@@ -57,23 +51,11 @@ I am a **Software Engineer** specializing in transaction-safe backend services, 
 
 ### 🏦 Centerpiece Systems
 
-#### 🏛️ [Bank Management System](https://github.com/Raju3114)
-> **Stack:** Java 17, JDBC, MySQL, React, TypeScript
->
-> A transaction-safe financial ledger system designed with a strict Layered Architecture to manage accounts, process fund transfers, and protect data integrity.
-> - **Transaction-Safe:** Full support for SQL rollbacks on nested transaction failures to prevent balance discrepancy.
-> - **Thread-Safe:** Thread-locking paradigms to ensure concurrent deposit/withdraw requests execute sequentially.
-> - **Modular API:** Exposes clean REST API routes consumed by a React-TypeScript dashboard.
+#### 🏛️ [Bank Management System](https://github.com/Raju3114) &amp; 🧠 [Hybrid Quantum Graph Neural Network](https://github.com/Raju3114)
 
-#### 🧠 [Hybrid Quantum Graph Neural Network](https://github.com/Raju3114)
-> **Stack:** Python, PyTorch, Scikit-learn, PCA, GNNs
->
-> An experimental AI network leveraging Graph Neural Networks integrated with quantum-inspired classification mechanisms to achieve highly accurate graph predictions.
-> - **High Accuracy:** Attains a **98% predictive classification rate** on structured graphs.
-> - **Data Compression:** Uses Principal Component Analysis (PCA) to compress high-dimensional node features prior to neural training.
-> - **Deep Learning:** Leverages PyTorch-Geometric structures to run deep graph convolution steps.
-
-<br>
+<p align="center">
+  <img src="./projects_info.svg" alt="Centerpiece Systems Specifications" width="100%" />
+</p>
 
 <p align="center">
   <img src="./projects.svg" alt="Mission Portfolio Diagrams" width="100%" />
@@ -113,5 +95,16 @@ The grid below tracks contributions to my repositories, defended daily from wave
 </p>
 
 <p align="center">
-  <img src="./divider_footer.svg" alt="Connection Terminated Line" width="100%" />
+  <img src="./divider_footer.svg" alt="Establish Connection Terminal" width="100%" />
+</p>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/raj-kumar-a74601252" target="_blank">
+    <img src="./connect_linkedin_footer.svg" alt="LinkedIn Node" width="100%" />
+  </a>
+</p>
+<p align="center">
+  <a href="mailto:rajkumar.3114h@gmail.com">
+    <img src="./connect_email_footer.svg" alt="Email Node" width="100%" />
+  </a>
 </p>

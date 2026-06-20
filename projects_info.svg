@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 310" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;family=Orbitron:wght@800;900&amp;family=Oxanium:wght@600;700&amp;display=swap');
+      
+      :root {
+        --bg-color: #020205;
+        --border-color: rgba(0, 240, 255, 0.15);
+        --text-bright: #ffffff;
+        --text-muted: #64748b;
+        --color-blue: #3b82f6;
+        --color-cyan: #06b6d4;
+        --color-pink: #ec4899;
+        --color-violet: #8b5cf6;
+      }
+
+      .bg-panel {
+        fill: var(--bg-color);
+        stroke: var(--border-color);
+        stroke-width: 1.5;
+        rx: 8;
+      }
+
+      .sub-panel {
+        fill: #04040a;
+        stroke: rgba(0, 240, 255, 0.08);
+        stroke-width: 1.2;
+        rx: 6;
+      }
+
+      /* Fonts */
+      .proj-title {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900;
+        font-size: 13px;
+        letter-spacing: 1px;
+      }
+      
+      .proj-stack {
+        font-family: 'Fira Code', monospace;
+        font-weight: 700;
+        font-size: 9.5px;
+        fill: var(--color-cyan);
+      }
+
+      .bullet-tag {
+        font-family: 'Fira Code', monospace;
+        font-weight: 700;
+        font-size: 9px;
+      }
+
+      .bullet-text {
+        font-family: 'Oxanium', sans-serif;
+        font-weight: 600;
+        font-size: 11.5px;
+        fill: var(--text-bright);
+      }
+
+      /* Vault Dial spin */
+      @keyframes vaultSpin {
+        0% { transform: rotate(0deg); }
+        50% { transform: rotate(180deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .anim-vault {
+        animation: vaultSpin 10s ease-in-out infinite;
+        transform-origin: 40px 38px;
+      }
+
+      /* Quantum Ring spin */
+      @keyframes quantSpin {
+        0% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(180deg) scale(1.15); }
+        100% { transform: rotate(360deg) scale(1); }
+      }
+      .anim-quant-ring {
+        animation: quantSpin 6s linear infinite;
+        transform-origin: 440px 38px;
+      }
+      
+      @keyframes floatParticle {
+        0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+        50% { transform: translate(3px, -3px); opacity: 1; }
+      }
+      .particle-1 { animation: floatParticle 2.5s infinite ease-in-out; }
+      .particle-2 { animation: floatParticle 3s infinite ease-in-out; animation-delay: 1s; }
+
+      /* Scanning screen scanline */
+      @keyframes sweepScan {
+        0% { transform: translateY(-5px); opacity: 0; }
+        10% { opacity: 0.7; }
+        90% { opacity: 0.7; }
+        100% { transform: translateY(300px); opacity: 0; }
+      }
+      .laser-scanner {
+        animation: sweepScan 8s linear infinite;
+        fill: url(#laser-gradient);
+        opacity: 0;
+      }
+
+      .corner-bracket {
+        fill: none;
+        stroke: var(--color-cyan);
+        stroke-width: 2;
+      }
+    </style>
+
+    <linearGradient id="laser-gradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base Panel -->
+  <rect x="2" y="2" width="846" height="306" class="bg-panel" />
+
+  <!-- Corner Brackets -->
+  <path d="M 12 2 L 2 12" class="corner-bracket" />
+  <path d="M 838 2 L 848 12" class="corner-bracket" />
+  <path d="M 2 298 L 12 308" class="corner-bracket" />
+  <path d="M 848 298 L 838 308" class="corner-bracket" />
+
+  <!-- Scanner Scanline -->
+  <rect x="4" y="0" width="842" height="6" class="laser-scanner" />
+
+  <!-- ================= LEFT COLUMN: BANK MANAGEMENT SYSTEM ================= -->
+  <g transform="translate(15, 15)">
+    <!-- Sub Panel Box -->
+    <rect width="395" height="280" class="sub-panel" />
+    
+    <!-- Animated Vault Icon -->
+    <g transform="translate(0, 0)">
+      <!-- Outer Dial -->
+      <circle cx="40" cy="38" r="16" fill="none" stroke="#3b82f6" stroke-width="1.8" />
+      <g class="anim-vault">
+        <circle cx="40" cy="38" r="11" fill="none" stroke="#3b82f6" stroke-width="1.2" stroke-dasharray="3, 3" />
+        <circle cx="40" cy="24" r="2.5" fill="#00f0ff" />
+        <circle cx="40" cy="52" r="2.5" fill="#00f0ff" />
+        <circle cx="26" cy="38" r="2.5" fill="#00f0ff" />
+        <circle cx="54" cy="38" r="2.5" fill="#00f0ff" />
+      </g>
+      <!-- Center -->
+      <circle cx="40" cy="38" r="4.5" fill="#020205" stroke="#3b82f6" stroke-width="1.5" />
+    </g>
+
+    <!-- Project Title & Stack -->
+    <text x="70" y="30" class="proj-title" fill="#3b82f6">BANK MANAGEMENT SYSTEM</text>
+    <text x="70" y="47" class="proj-stack">Java 17 // JDBC // MySQL // React // TS</text>
+
+    <line x1="15" y1="65" x2="380" y2="65" stroke="rgba(0, 240, 255, 0.05)" stroke-width="1" />
+
+    <!-- Feature 1 -->
+    <g transform="translate(15, 80)">
+      <rect width="66" height="15" rx="3" fill="rgba(59, 130, 246, 0.1)" stroke="rgba(59, 130, 246, 0.3)" stroke-width="0.8" />
+      <text x="33" y="11" text-anchor="middle" class="bullet-tag" fill="#3b82f6">TX_SAFE</text>
+      <!-- Description -->
+      <text x="80" y="12" class="bullet-text">Full support for SQL rollbacks on nested</text>
+      <text x="80" y="27" class="bullet-text" fill="#94a3b8">transaction failures to prevent balance discrepancy.</text>
+    </g>
+
+    <!-- Feature 2 -->
+    <g transform="translate(15, 140)">
+      <rect width="66" height="15" rx="3" fill="rgba(236, 72, 153, 0.1)" stroke="rgba(236, 72, 153, 0.3)" stroke-width="0.8" />
+      <text x="33" y="11" text-anchor="middle" class="bullet-tag" fill="#ec4899">MUTEX_LOCK</text>
+      <!-- Description -->
+      <text x="80" y="12" class="bullet-text">Thread-locking paradigms to ensure concurrent</text>
+      <text x="80" y="27" class="bullet-text" fill="#94a3b8">deposit and withdraw requests execute sequentially.</text>
+    </g>
+
+    <!-- Feature 3 -->
+    <g transform="translate(15, 200)">
+      <rect width="66" height="15" rx="3" fill="rgba(6, 182, 212, 0.1)" stroke="rgba(6, 182, 212, 0.3)" stroke-width="0.8" />
+      <text x="33" y="11" text-anchor="middle" class="bullet-tag" fill="#06b6d4">REST_API</text>
+      <!-- Description -->
+      <text x="80" y="12" class="bullet-text">Exposes clean REST API routing endpoints</text>
+      <text x="80" y="27" class="bullet-text" fill="#94a3b8">seamlessly consumed by a React-TypeScript dashboard.</text>
+    </g>
+  </g>
+
+  <!-- ================= RIGHT COLUMN: HYBRID QUANTUM GNN ================= -->
+  <g transform="translate(440, 15)">
+    <!-- Sub Panel Box -->
+    <rect width="395" height="280" class="sub-panel" />
+    
+    <!-- Animated Quantum Brain Node Icon -->
+    <g transform="translate(0, 0)">
+      <!-- Orbital Rings -->
+      <ellipse cx="40" cy="38" rx="14" ry="4" fill="none" stroke="#ec4899" stroke-width="1.2" transform="rotate(45 40 38)" class="anim-quant-ring" />
+      <ellipse cx="40" cy="38" rx="14" ry="4" fill="none" stroke="#ec4899" stroke-width="1.2" transform="rotate(-45 40 38)" class="anim-quant-ring" style="animation-delay: -3s;" />
+      <!-- Central Proton Node -->
+      <circle cx="40" cy="38" r="4.5" fill="#020205" stroke="#ec4899" stroke-width="1.8" />
+      <circle cx="34" cy="32" r="1.5" fill="#00f0ff" class="particle-1" />
+      <circle cx="46" cy="44" r="1.5" fill="#00f0ff" class="particle-2" />
+    </g>
+
+    <!-- Project Title & Stack -->
+    <text x="70" y="30" class="proj-title" fill="#ec4899">HYBRID QUANTUM GNN</text>
+    <text x="70" y="47" class="proj-stack">Python // PyTorch // Scikit-Learn // PCA // GNNs</text>
+
+    <line x1="15" y1="65" x2="380" y2="65" stroke="rgba(0, 240, 255, 0.05)" stroke-width="1" />
+
+    <!-- Feature 1 -->
+    <g transform="translate(15, 80)">
+      <rect width="66" height="15" rx="3" fill="rgba(236, 72, 153, 0.1)" stroke="rgba(236, 72, 153, 0.3)" stroke-width="0.8" />
+      <text x="33" y="11" text-anchor="middle" class="bullet-tag" fill="#ec4899">ACCURACY</text>
+      <!-- Description -->
+      <text x="80" y="12" class="bullet-text">Attains a 98% predictive classification rate</text>
+      <text x="80" y="27" class="bullet-text" fill="#94a3b8">directly on structured graph node clusters.</text>
+    </g>
+
+    <!-- Feature 2 -->
+    <g transform="translate(15, 140)">
+      <rect width="66" height="15" rx="3" fill="rgba(6, 182, 212, 0.1)" stroke="rgba(6, 182, 212, 0.3)" stroke-width="0.8" />
+      <text x="33" y="11" text-anchor="middle" class="bullet-tag" fill="#06b6d4">PCA_COMP</text>
+      <!-- Description -->
+      <text x="80" y="12" class="bullet-text">Uses Principal Component Analysis to compress</text>
+      <text x="80" y="27" class="bullet-text" fill="#94a3b8">high-dimensional node features prior to neural training.</text>
+    </g>
+
+    <!-- Feature 3 -->
+    <g transform="translate(15, 200)">
+      <rect width="66" height="15" rx="3" fill="rgba(59, 130, 246, 0.1)" stroke="rgba(59, 130, 246, 0.3)" stroke-width="0.8" />
+      <text x="33" y="11" text-anchor="middle" class="bullet-tag" fill="#3b82f6">PYTORCH</text>
+      <!-- Description -->
+      <text x="80" y="12" class="bullet-text">Leverages PyTorch-Geometric modules to execute</text>
+      <text x="80" y="27" class="bullet-text" fill="#94a3b8">deep graph convolution and message-passing layers.</text>
+    </g>
+  </g>
+</svg>

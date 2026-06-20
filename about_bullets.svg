@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 200" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;family=Orbitron:wght@800;900&amp;family=Oxanium:wght@600;700&amp;display=swap');
+      
+      :root {
+        --bg-color: #020205;
+        --border-color: rgba(0, 240, 255, 0.15);
+        --text-bright: #ffffff;
+        --text-muted: #94a3b8;
+        --color-violet: #7c3aed;
+        --color-cyan: #06b6d4;
+        --color-pink: #ec4899;
+      }
+
+      .bg-panel {
+        fill: var(--bg-color);
+        stroke: var(--border-color);
+        stroke-width: 1.5;
+        rx: 8;
+      }
+
+      /* Fonts */
+      .lbl-title {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900;
+        font-size: 11px;
+        letter-spacing: 1.5px;
+      }
+      
+      .lbl-desc {
+        font-family: 'Oxanium', sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        fill: var(--text-bright);
+      }
+
+      .lbl-prefix {
+        font-family: 'Fira Code', monospace;
+        font-weight: 700;
+        font-size: 11px;
+        fill: var(--text-muted);
+      }
+
+      /* Animations */
+      @keyframes spinGear {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .anim-gear {
+        animation: spinGear 8s linear infinite;
+        transform-origin: 40px 48px;
+      }
+
+      @keyframes rocketJitter {
+        0%, 100% { transform: translate(0, 0); }
+        25% { transform: translate(-0.5px, 0.5px); }
+        50% { transform: translate(0.5px, -0.5px); }
+        75% { transform: translate(-0.5px, -0.5px); }
+      }
+      @keyframes flamePulse {
+        0%, 100% { opacity: 0.4; transform: scaleY(0.9); }
+        50% { opacity: 1; transform: scaleY(1.3); }
+      }
+      .anim-rocket {
+        animation: rocketJitter 0.2s infinite;
+        transform-origin: 40px 108px;
+      }
+      .anim-flame {
+        animation: flamePulse 0.15s infinite;
+        transform-origin: 40px 120px;
+      }
+
+      @keyframes brainPulse {
+        0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 1px var(--color-pink)); }
+        50% { opacity: 1; filter: drop-shadow(0 0 4px var(--color-pink)); }
+      }
+      .anim-brain-node {
+        animation: brainPulse 2s infinite ease-in-out;
+      }
+
+      @keyframes laserSweep {
+        0% { transform: translateY(-10px); opacity: 0; }
+        5% { opacity: 0.8; }
+        95% { opacity: 0.8; }
+        100% { transform: translateY(210px); opacity: 0; }
+      }
+      .laser-scanner {
+        animation: laserSweep 6s linear infinite;
+        fill: url(#laser-gradient);
+        opacity: 0;
+      }
+      
+      .corner-bracket {
+        fill: none;
+        stroke: var(--color-cyan);
+        stroke-width: 2;
+      }
+
+      /* Row Glow on Hover */
+      .hud-row {
+        transition: fill 0.3s;
+      }
+      .hud-row:hover {
+        fill: rgba(0, 240, 255, 0.02);
+      }
+    </style>
+
+    <linearGradient id="laser-gradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dashboard Frame -->
+  <rect x="2" y="2" width="846" height="196" class="bg-panel"/>
+  
+  <!-- Corner Tech Brackets -->
+  <path d="M 12 2 L 2 12" class="corner-bracket" />
+  <path d="M 838 2 L 848 12" class="corner-bracket" />
+  <path d="M 2 188 L 12 198" class="corner-bracket" />
+  <path d="M 848 188 L 838 198" class="corner-bracket" stroke-linecap="round" />
+
+  <!-- Scanning laser beam overlay -->
+  <rect x="4" y="0" width="842" height="6" class="laser-scanner" />
+
+  <!-- ROW 1: CORE FOCUS -->
+  <g class="hud-row">
+    <rect x="10" y="10" width="830" height="56" fill="transparent" />
+    
+    <!-- Animated Gear Icon (Center coordinates roughly 40, 38) -->
+    <g class="anim-gear" transform="translate(0, -10)">
+      <circle cx="40" cy="48" r="14" fill="none" stroke="#7c3aed" stroke-width="2.5" />
+      <!-- Teeth -->
+      <line x1="40" y1="28" x2="40" y2="34" stroke="#7c3aed" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="40" y1="62" x2="40" y2="68" stroke="#7c3aed" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="20" y1="48" x2="26" y2="48" stroke="#7c3aed" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="54" y1="48" x2="60" y2="48" stroke="#7c3aed" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="26" y1="34" x2="31" y2="39" stroke="#7c3aed" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="49" y1="57" x2="54" y2="62" stroke="#7c3aed" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="26" y1="62" x2="31" y2="57" stroke="#7c3aed" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="49" y1="39" x2="54" y2="34" stroke="#7c3aed" stroke-width="3.5" stroke-linecap="round" />
+      <!-- Inner core -->
+      <circle cx="40" cy="48" r="5" fill="#020205" stroke="#00f0ff" stroke-width="1.5" />
+    </g>
+
+    <!-- Texts -->
+    <text x="80" y="30" class="lbl-title" fill="#a78bfa">CORE FOCUS</text>
+    <text x="80" y="47" class="lbl-prefix">SYS_VAL_01 &gt;&gt;</text>
+    <text x="180" y="47" class="lbl-desc">Java Scalability, Relational Databases, and Quantum ML.</text>
+
+    <!-- Divider Line -->
+    <line x1="20" y1="72" x2="830" y2="72" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1" />
+  </g>
+
+  <!-- ROW 2: PHILOSOPHY -->
+  <g class="hud-row">
+    <rect x="10" y="73" width="830" height="56" fill="transparent" />
+    
+    <!-- Rocket Icon -->
+    <g class="anim-rocket">
+      <!-- Flame -->
+      <path d="M 37 118 Q 40 128 43 118 Z" fill="#ec4899" class="anim-flame" />
+      <path d="M 39 118 Q 40 123 41 118 Z" fill="#ffffff" class="anim-flame" style="animation-delay: 0.07s;" />
+      
+      <!-- Rocket Body -->
+      <path d="M 40 92 C 43 98 44 108 44 116 L 36 116 C 36 108 37 98 40 92 Z" fill="#e2e8f0" stroke="#06b6d4" stroke-width="1.5" />
+      <!-- Fins -->
+      <path d="M 36 110 L 31 116 L 36 116 Z" fill="#ec4899" />
+      <path d="M 44 110 L 49 116 L 44 116 Z" fill="#ec4899" />
+      <!-- Window -->
+      <circle cx="40" cy="102" r="2.5" fill="#020205" stroke="#06b6d4" stroke-width="1" />
+    </g>
+
+    <!-- Texts -->
+    <text x="80" y="93" class="lbl-title" fill="#22d3ee">PHILOSOPHY</text>
+    <text x="80" y="110" class="lbl-prefix">SYS_VAL_02 &gt;&gt;</text>
+    <text x="180" y="110" class="lbl-desc">Writing clean, thread-safe, and self-documenting code.</text>
+
+    <!-- Divider Line -->
+    <line x1="20" y1="135" x2="830" y2="135" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1" />
+  </g>
+
+  <!-- ROW 3: LEARNING -->
+  <g class="hud-row">
+    <rect x="10" y="136" width="830" height="56" fill="transparent" />
+    
+    <!-- Animated Brain Icon -->
+    <g transform="translate(26, 142)">
+      <!-- Left hemisphere outline -->
+      <path d="M 14 8 C 8 8 6 12 8 16 C 6 18 6 22 10 24 C 8 26 10 30 14 28 C 14 32 18 30 20 28" fill="none" stroke="#ec4899" stroke-width="1.5" stroke-linecap="round" />
+      <!-- Right hemisphere outline -->
+      <path d="M 14 8 C 20 8 22 12 20 16 C 22 18 22 22 18 24 C 20 26 18 30 14 28 C 14 32 10 30 8 28" fill="none" stroke="#ec4899" stroke-width="1.5" stroke-linecap="round" transform="translate(28, 0) scale(-1, 1)" />
+      
+      <!-- Center Line / Stem -->
+      <line x1="14" y1="9" x2="14" y2="28" stroke="#ec4899" stroke-width="1.5" />
+
+      <!-- Synaptic connections glowing nodes -->
+      <circle cx="8" cy="16" r="2.5" fill="#ec4899" class="anim-brain-node" style="animation-delay: 0.3s;" />
+      <circle cx="20" cy="16" r="2.5" fill="#06b6d4" class="anim-brain-node" style="animation-delay: 0.7s;" />
+      <circle cx="11" cy="24" r="2" fill="#ec4899" class="anim-brain-node" style="animation-delay: 1.1s;" />
+      <circle cx="17" cy="24" r="2" fill="#06b6d4" class="anim-brain-node" style="animation-delay: 1.5s;" />
+    </g>
+
+    <!-- Texts -->
+    <text x="80" y="156" class="lbl-title" fill="#f472b6">LEARNING</text>
+    <text x="80" y="173" class="lbl-prefix">SYS_VAL_03 &gt;&gt;</text>
+    <text x="180" y="173" class="lbl-desc">Distributed computing systems and reactive programming.</text>
+  </g>
+</svg>

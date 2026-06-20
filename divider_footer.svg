@@ -57,7 +57,7 @@
   <!-- Centered Title Text -->
   <text x="425" y="30" class="text-title">
     <tspan class="bracket">&lt;&lt; </tspan>
-    [SECURE CONNECTION TERMINATED // OFF]
+    LET'S CONNECT // INITIALIZE COMMUNICATIONS
     <tspan class="bracket"> &gt;&gt;</tspan>
   </text>
 </svg>

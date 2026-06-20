@@ -1,0 +1,279 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 270" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;family=Orbitron:wght@800;900&amp;family=Oxanium:wght@600;700&amp;display=swap');
+      
+      :root {
+        --bg-color: #020205;
+        --border-color: rgba(0, 240, 255, 0.15);
+        --text-bright: #ffffff;
+        --text-muted: #64748b;
+        --color-blue: #3b82f6;
+        --color-cyan: #06b6d4;
+        --color-amber: #f59e0b;
+        --color-purple: #8b5cf6;
+        --color-orange: #f97316;
+      }
+
+      .bg-panel {
+        fill: var(--bg-color);
+        stroke: var(--border-color);
+        stroke-width: 1.5;
+        rx: 8;
+      }
+
+      /* Fonts */
+      .lbl-title {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 900;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+      }
+      
+      .lbl-desc {
+        font-family: 'Oxanium', sans-serif;
+        font-weight: 600;
+        font-size: 13px;
+        fill: var(--text-bright);
+      }
+
+      .lbl-prefix {
+        font-family: 'Fira Code', monospace;
+        font-weight: 700;
+        font-size: 10px;
+        fill: var(--text-muted);
+      }
+
+      /* Hover highlight */
+      .hud-row {
+        transition: fill 0.3s;
+      }
+      .hud-row:hover {
+        fill: rgba(0, 240, 255, 0.02);
+      }
+
+      .corner-bracket {
+        fill: none;
+        stroke: var(--color-blue);
+        stroke-width: 2;
+      }
+
+      /* STEAM ANIMATION (Coffee Cup) */
+      @keyframes steamUp {
+        0% { stroke-dashoffset: 20; opacity: 0; transform: translateY(0); }
+        40% { opacity: 0.8; }
+        80% { opacity: 0; }
+        100% { stroke-dashoffset: 0; transform: translateY(-6px); }
+      }
+      .steam-line {
+        fill: none;
+        stroke: var(--color-amber);
+        stroke-width: 1.5;
+        stroke-dasharray: 10, 10;
+        animation: steamUp 2.5s linear infinite;
+        stroke-linecap: round;
+      }
+
+      /* DATABASE LED ANIMATION */
+      @keyframes dbBlink {
+        0%, 100% { fill: #1e293b; }
+        50% { fill: var(--color-cyan); filter: drop-shadow(0 0 3px var(--color-cyan)); }
+      }
+      .db-led-1 { animation: dbBlink 1.5s infinite; }
+      .db-led-2 { animation: dbBlink 1.5s infinite; animation-delay: 0.5s; }
+      .db-led-3 { animation: dbBlink 1.5s infinite; animation-delay: 1s; }
+
+      /* LIGHTNING BOLT CRACKLE */
+      @keyframes boltCrackle {
+        0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 1px var(--color-orange)); }
+        10%, 90% { opacity: 1; filter: drop-shadow(0 0 4px var(--color-orange)); }
+        15% { opacity: 0.3; }
+        20% { opacity: 0.9; }
+      }
+      .anim-bolt {
+        animation: boltCrackle 3s infinite ease-in-out;
+      }
+
+      /* REACT ATOM ELECTRON ORBIT */
+      @keyframes electronOrbit {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .anim-orbit {
+        animation: electronOrbit 6s linear infinite;
+        transform-origin: 40px 182px;
+      }
+
+      /* INTERLOCKING GEARS */
+      @keyframes gearCW {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes gearCCW {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(-360deg); }
+      }
+      .gear-1 {
+        animation: gearCW 8s linear infinite;
+        transform-origin: 36px 232px;
+      }
+      .gear-2 {
+        animation: gearCCW 8s linear infinite;
+        transform-origin: 48px 240px;
+      }
+
+      @keyframes laserSweep {
+        0% { transform: translateY(-10px); opacity: 0; }
+        5% { opacity: 0.8; }
+        95% { opacity: 0.8; }
+        100% { transform: translateY(280px); opacity: 0; }
+      }
+      .laser-scanner {
+        animation: laserSweep 7s linear infinite;
+        fill: url(#laser-gradient);
+        opacity: 0;
+      }
+    </style>
+
+    <linearGradient id="laser-gradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0066ff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#0066ff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0066ff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Panel Frame -->
+  <rect x="2" y="2" width="846" height="266" class="bg-panel"/>
+
+  <!-- Tech Brackets -->
+  <path d="M 12 2 L 2 12" class="corner-bracket" />
+  <path d="M 838 2 L 848 12" class="corner-bracket" />
+  <path d="M 2 258 L 12 268" class="corner-bracket" />
+  <path d="M 848 258 L 838 268" class="corner-bracket" />
+
+  <!-- Sweep Laser -->
+  <rect x="4" y="0" width="842" height="6" class="laser-scanner" />
+
+  <!-- ROW 1: BACKEND ENGINE -->
+  <g class="hud-row">
+    <rect x="10" y="10" width="830" height="46" fill="transparent" />
+    
+    <!-- Steam coffee cup (Center coordinates 40, 32) -->
+    <g transform="translate(0, 0)">
+      <!-- Steaming waves -->
+      <path d="M 37 20 Q 35 14 38 10" class="steam-line" />
+      <path d="M 43 20 Q 41 14 44 10" class="steam-line" style="animation-delay: 0.5s;" />
+      
+      <!-- Cup Body -->
+      <path d="M 30 24 L 50 24 C 50 32 46 36 40 36 C 34 36 30 32 30 24 Z" fill="none" stroke="#f59e0b" stroke-width="1.8" />
+      <path d="M 50 26 C 54 26 54 30 50 30" fill="none" stroke="#f59e0b" stroke-width="1.8" />
+      <!-- Plate -->
+      <line x1="26" y1="40" x2="54" y2="40" stroke="#f59e0b" stroke-width="1.5" stroke-linecap="round" />
+    </g>
+
+    <!-- Texts -->
+    <text x="80" y="26" class="lbl-title" fill="#f59e0b">BACKEND ENGINE</text>
+    <text x="80" y="40" class="lbl-prefix">ENGINE // DEPLOYED &gt;&gt;</text>
+    <text x="215" y="40" class="lbl-desc">Java 17, JDBC Interfaces, Python</text>
+
+    <line x1="20" y1="58" x2="830" y2="58" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1" />
+  </g>
+
+  <!-- ROW 2: DATABASE SYSTEMS -->
+  <g class="hud-row">
+    <rect x="10" y="60" width="830" height="46" fill="transparent" />
+    
+    <!-- Database Cylinders -->
+    <g transform="translate(28, 68)">
+      <!-- Top layer -->
+      <path d="M 0 6 C 0 2 24 2 24 6 C 24 10 0 10 0 6 Z" fill="none" stroke="#06b6d4" stroke-width="1.5" />
+      <path d="M 0 6 L 0 12 C 0 16 24 16 24 12 L 24 6" fill="none" stroke="#06b6d4" stroke-width="1.5" />
+      <circle cx="6" cy="11" r="2" class="db-led-1" fill="#1e293b" />
+      
+      <!-- Middle layer -->
+      <path d="M 0 16 L 0 22 C 0 26 24 26 24 22 L 24 16" fill="none" stroke="#06b6d4" stroke-width="1.5" />
+      <circle cx="6" cy="21" r="2" class="db-led-2" fill="#1e293b" />
+
+      <!-- Bottom layer -->
+      <path d="M 0 26 L 0 32 C 0 36 24 36 24 32 L 24 26" fill="none" stroke="#06b6d4" stroke-width="1.5" />
+      <circle cx="6" cy="31" r="2" class="db-led-3" fill="#1e293b" />
+    </g>
+
+    <!-- Texts -->
+    <text x="80" y="76" class="lbl-title" fill="#06b6d4">DATABASE SYSTEMS</text>
+    <text x="80" y="90" class="lbl-prefix">DB_CONN // SECURE &gt;&gt;</text>
+    <text x="215" y="90" class="lbl-desc">MySQL, Relational DBMS design, query structures</text>
+
+    <line x1="20" y1="108" x2="830" y2="108" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1" />
+  </g>
+
+  <!-- ROW 3: SYSTEMS CORE -->
+  <g class="hud-row">
+    <rect x="10" y="110" width="830" height="46" fill="transparent" />
+    
+    <!-- Lightning Bolt (Center 40, 132) -->
+    <g transform="translate(0, 110)">
+      <path d="M 43 6 L 31 22 L 40 22 L 37 38 L 49 22 L 40 22 Z" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linejoin="round" class="anim-bolt" />
+    </g>
+
+    <!-- Texts -->
+    <text x="80" y="126" class="lbl-title" fill="#f97316">SYSTEMS CORE</text>
+    <text x="80" y="140" class="lbl-prefix">ALGORITHMS // SET &gt;&gt;</text>
+    <text x="215" y="140" class="lbl-desc">Data Structures &amp; Algorithms (DSA), Object-Oriented Design (OOD)</text>
+
+    <line x1="20" y1="158" x2="830" y2="158" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1" />
+  </g>
+
+  <!-- ROW 4: FRONTEND LAYERS -->
+  <g class="hud-row">
+    <rect x="10" y="160" width="830" height="46" fill="transparent" />
+    
+    <!-- React Atom Icon (Center 40, 182) -->
+    <g transform="translate(0, 0)">
+      <!-- Ring 1 -->
+      <ellipse cx="40" cy="182" rx="14" ry="5" fill="none" stroke="#3b82f6" stroke-width="1.2" transform="rotate(30 40 182)" />
+      <!-- Ring 2 -->
+      <ellipse cx="40" cy="182" rx="14" ry="5" fill="none" stroke="#3b82f6" stroke-width="1.2" transform="rotate(-30 40 182)" />
+      <!-- Ring 3 -->
+      <ellipse cx="40" cy="182" rx="14" ry="5" fill="none" stroke="#3b82f6" stroke-width="1.2" transform="rotate(90 40 182)" />
+      <!-- Core -->
+      <circle cx="40" cy="182" r="2.5" fill="#3b82f6" />
+      
+      <!-- Orbiting electron dot -->
+      <g class="anim-orbit">
+        <circle cx="54" cy="182" r="1.8" fill="#00f0ff" filter="drop-shadow(0 0 2px #00f0ff)" />
+      </g>
+    </g>
+
+    <!-- Texts -->
+    <text x="80" y="176" class="lbl-title" fill="#3b82f6">FRONTEND LAYERS</text>
+    <text x="80" y="190" class="lbl-prefix">INTERFACES // RUN &gt;&gt;</text>
+    <text x="215" y="190" class="lbl-desc">React, TypeScript, HTML5, CSS3, ES6</text>
+
+    <line x1="20" y1="208" x2="830" y2="208" stroke="rgba(0, 240, 255, 0.08)" stroke-width="1" />
+  </g>
+
+  <!-- ROW 5: TOOLS & BUILD -->
+  <g class="hud-row">
+    <rect x="10" y="210" width="830" height="46" fill="transparent" />
+    
+    <!-- Gears (Centers: 36, 232 and 48, 240) -->
+    <g transform="translate(0, 0)">
+      <!-- Gear 1 -->
+      <g class="gear-1">
+        <circle cx="36" cy="232" r="6" fill="none" stroke="#8b5cf6" stroke-width="1.5" />
+        <path d="M 36 223 L 36 226 M 36 238 L 36 241 M 27 232 L 30 232 M 42 232 L 45 232" stroke="#8b5cf6" stroke-width="1.8" stroke-linecap="round" />
+      </g>
+      <!-- Gear 2 -->
+      <g class="gear-2">
+        <circle cx="48" cy="240" r="4.5" fill="none" stroke="#8b5cf6" stroke-width="1.2" />
+        <path d="M 48 233 L 48 235 M 48 245 L 48 247 M 41 240 L 43 240 M 53 240 L 55 240" stroke="#8b5cf6" stroke-width="1.5" stroke-linecap="round" />
+      </g>
+    </g>
+
+    <!-- Texts -->
+    <text x="80" y="226" class="lbl-title" fill="#8b5cf6">TOOLS &amp; BUILD</text>
+    <text x="80" y="240" class="lbl-prefix">ENVIRONMENT // OK &gt;&gt;</text>
+    <text x="215" y="240" class="lbl-desc">Git / GitHub, Maven build systems, PyTorch</text>
+  </g>
+</svg>
