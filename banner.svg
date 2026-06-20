@@ -53,7 +53,7 @@
         animation: floatDust 12s ease-in-out infinite;
       }
       
-      /* Spaceship floating in background */
+      /* Mother-ship floating in background (very subtle) */
       @keyframes spaceFloat {
         0%, 100% { transform: translateY(0px) rotate(0deg); }
         50% { transform: translateY(-8px) rotate(1deg); }
@@ -61,7 +61,19 @@
       .cruiser-back {
         animation: spaceFloat 8s ease-in-out infinite;
         transform-origin: 425px 125px;
-        opacity: 0.18;
+        opacity: 0.08;
+      }
+
+      /* Running Spaceship Cruiser (Left to Right Flight) */
+      @keyframes spaceshipRun {
+        0% { transform: translate(-150px, 60px) rotate(8deg) scale(0.65); opacity: 0; }
+        10% { opacity: 0.35; }
+        90% { opacity: 0.35; }
+        100% { transform: translate(950px, 150px) rotate(8deg) scale(0.65); opacity: 0; }
+      }
+      .running-ship {
+        animation: spaceshipRun 10s linear infinite;
+        transform-origin: center;
       }
 
       /* Word Motions and Parallax */
@@ -75,7 +87,7 @@
       }
       @keyframes floatRoles {
         0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-1px); }
+        50% { transform: translateY(-1.5px); }
       }
       .title-group {
         animation: floatTitle 6s ease-in-out infinite;
@@ -98,14 +110,14 @@
       }
       .bracket-left {
         animation: bracketMoveLeft 4s ease-in-out infinite;
-        transform-origin: 255px 140px;
+        transform-origin: 245px 145px;
       }
       .bracket-right {
         animation: bracketMoveRight 4s ease-in-out infinite;
-        transform-origin: 595px 140px;
+        transform-origin: 605px 145px;
       }
 
-      /* Glow pulses for branding */
+      /* Glowing pulses for branding */
       @keyframes cyanGlow {
         0%, 100% { filter: drop-shadow(0 0 3px var(--space-cyan)) drop-shadow(0 0 8px rgba(0, 240, 255, 0.3)); opacity: 0.95; }
         50% { filter: drop-shadow(0 0 8px var(--space-cyan)) drop-shadow(0 0 20px rgba(0, 240, 255, 0.6)); opacity: 1; }
@@ -116,6 +128,23 @@
       }
       .glow-cyan-text { animation: cyanGlow 3s ease-in-out infinite; }
       .glow-blue-text { animation: blueGlow 4.5s ease-in-out infinite; }
+
+      /* Color Pulsing for Roles */
+      @keyframes rolePulse1 {
+        0%, 100% { fill: var(--space-blue); filter: drop-shadow(0 0 1px var(--space-blue)); }
+        50% { fill: #ffffff; filter: none; }
+      }
+      @keyframes rolePulse2 {
+        0%, 100% { fill: #ffffff; filter: none; }
+        50% { fill: var(--space-cyan); filter: drop-shadow(0 0 1px var(--space-cyan)); }
+      }
+      @keyframes rolePulse3 {
+        0%, 100% { fill: #ffffff; filter: none; }
+        50% { fill: var(--space-purple); filter: drop-shadow(0 0 1px var(--space-purple)); }
+      }
+      .role-1 { animation: rolePulse1 4s infinite ease-in-out; }
+      .role-2 { animation: rolePulse2 4s infinite ease-in-out; animation-delay: 1.3s; }
+      .role-3 { animation: rolePulse3 4s infinite ease-in-out; animation-delay: 2.6s; }
 
       /* Branding details text styles */
       .title-text {
@@ -157,6 +186,12 @@
 
     <!-- Thruster fire gradient -->
     <linearGradient id="thruster-glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0066ff" stop-opacity="0" />
+    </linearGradient>
+    
+    <!-- Running thruster fire gradient -->
+    <linearGradient id="running-thruster-glow" x1="1" y1="0" x2="0" y2="0">
       <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
       <stop offset="100%" stop-color="#0066ff" stop-opacity="0" />
     </linearGradient>
@@ -209,10 +244,9 @@
     <text x="635" y="138" font-family="'Fira Code', monospace" font-size="7" fill="var(--space-purple)" opacity="0.3">DEC_+48°14'</text>
   </g>
 
-  <!-- ================= SLEEK BACKGROUND SPACESHIP ================= -->
+  <!-- ================= SLEEK BACKGROUND MOTHER-SHIP (FLOATING) ================= -->
   <g class="cruiser-back">
     <circle cx="425" cy="125" r="85" fill="none" stroke="rgba(0, 240, 255, 0.03)" stroke-width="1" stroke-dasharray="5, 5" />
-    <circle cx="425" cy="125" r="115" fill="none" stroke="rgba(0, 240, 255, 0.02)" stroke-width="1" />
     
     <!-- Engine Ion Flame (vibrating) -->
     <path d="M 419 160 L 421 185 L 423 160 Z" fill="url(#thruster-glow)">
@@ -241,17 +275,29 @@
              L 419 92 Z" 
           fill="#010105" stroke="rgba(0, 240, 255, 0.16)" stroke-width="1.2" />
 
-    <!-- Left Wing extension -->
+    <!-- Wings -->
     <path d="M 407 110 L 345 142 L 350 152 L 397 138" fill="#010105" stroke="rgba(0, 240, 255, 0.12)" stroke-width="1" />
-    <!-- Right Wing extension -->
     <path d="M 443 110 L 505 142 L 500 152 L 453 138" fill="#010105" stroke="rgba(0, 240, 255, 0.12)" stroke-width="1" />
+  </g>
 
-    <!-- Cockpit detailing -->
-    <path d="M 425 82 L 429 98 L 421 98 Z" fill="none" stroke="var(--space-cyan)" stroke-width="0.8" opacity="0.5" />
-    
-    <!-- Wingtip laser node points -->
-    <circle cx="345" cy="141" r="1.5" fill="var(--space-cyan)" filter="drop-shadow(0 0 2px var(--space-cyan))" />
-    <circle cx="505" cy="141" r="1.5" fill="var(--space-cyan)" filter="drop-shadow(0 0 2px var(--space-cyan))" />
+  <!-- ================= RUNNING FIGHTER SHIP (LEFT TO RIGHT ZOOM) ================= -->
+  <g class="running-ship">
+    <!-- Ion Engine Exhaust Plume -->
+    <path d="M -45 5 L -10 0 L -45 -5 Z" fill="url(#running-thruster-glow)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="0.08s" repeatCount="indefinite" />
+    </path>
+    <!-- Speed trail lines -->
+    <line x1="-80" y1="0" x2="-20" y2="0" stroke="rgba(0, 240, 255, 0.35)" stroke-width="1.5" stroke-dasharray="6,4" />
+    <line x1="-70" y1="6" x2="-30" y2="6" stroke="rgba(0, 102, 255, 0.25)" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-70" y1="-6" x2="-30" y2="-6" stroke="rgba(0, 102, 255, 0.25)" stroke-width="1" stroke-dasharray="3,3" />
+
+    <!-- Fighter Body -->
+    <path d="M 20 0 L -15 8 L -9 0 L -15 -8 Z" fill="#010105" stroke="#00f0ff" stroke-width="1.5" />
+    <!-- Wings -->
+    <path d="M -5 0 L -12 14 L -8 0 Z" fill="#0066ff" />
+    <path d="M -5 0 L -12 -14 L -8 0 Z" fill="#0066ff" />
+    <!-- Canopy -->
+    <path d="M 6 0 L 0 3 L -3 0 L 0 -3 Z" fill="#ffffff" opacity="0.65" />
   </g>
 
   <!-- ================= FRONTGROUND INTERACTIVE TEXT MATRIX ================= -->
@@ -259,11 +305,11 @@
     <!-- Title Group -->
     <g class="title-group" transform-origin="425px 145px">
       <!-- Left Bracket -->
-      <text x="255" y="145" class="title-bracket glow-blue-text bracket-left" fill="var(--space-blue)">&lt;</text>
+      <text x="245" y="145" class="title-bracket glow-blue-text bracket-left" fill="var(--space-blue)">&lt;</text>
       <!-- Main Name -->
-      <text x="425" y="145" class="title-text glow-cyan-text" text-anchor="middle">RAJU3114</text>
+      <text x="425" y="145" class="title-text glow-cyan-text" text-anchor="middle">M Rajkumar</text>
       <!-- Right Bracket -->
-      <text x="595" y="145" class="title-bracket glow-cyan-text bracket-right" fill="var(--space-cyan)">/&gt;</text>
+      <text x="605" y="145" class="title-bracket glow-cyan-text bracket-right" fill="var(--space-cyan)">/&gt;</text>
     </g>
     
     <!-- Subtitle Group with typewriter animation -->
@@ -284,11 +330,11 @@
     <g class="roles-group" transform-origin="425px 230px">
       <text x="425" y="230" class="subtitle-text sub-roles" text-anchor="middle">
         <tspan fill="#4d5f80">[ </tspan>
-        <tspan fill="var(--space-blue)">JAVA_DEVELOPER</tspan>
+        <tspan class="role-1" fill="var(--space-blue)">JAVA_DEVELOPER</tspan>
         <tspan fill="#4d5f80"> // </tspan>
-        <tspan fill="var(--space-cyan)">BACKEND_SYSTEMS</tspan>
+        <tspan class="role-2" fill="var(--space-cyan)">BACKEND_SYSTEMS</tspan>
         <tspan fill="#4d5f80"> // </tspan>
-        <tspan fill="var(--space-purple)">AI_EXPLORER</tspan>
+        <tspan class="role-3" fill="var(--space-purple)">AI_EXPLORER</tspan>
         <tspan fill="#4d5f80"> ]</tspan>
       </text>
     </g>
