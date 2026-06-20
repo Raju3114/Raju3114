@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 300" width="100%" height="100%">
+  <defs>
+    <!-- Import Google Fonts -->
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;family=Space+Grotesk:wght@700&amp;display=swap');
+      
+      :root {
+        --color-bg: #040409;
+        --color-violet: #8a2be2;
+        --color-pink: #f43fa1;
+        --color-cyan: #00f0ff;
+        --color-text: #ffffff;
+      }
+      
+      .bg-rect {
+        fill: var(--color-bg);
+      }
+      
+      /* Grid scroll animation */
+      @keyframes gridScroll {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(40px); }
+      }
+      .grid-pattern {
+        animation: gridScroll 3s linear infinite;
+        stroke: rgba(138, 43, 226, 0.15);
+      }
+      
+      /* Glow pulses */
+      @keyframes violetPulse {
+        0%, 100% { filter: drop-shadow(0 0 3px var(--color-violet)) drop-shadow(0 0 8px var(--color-violet)); opacity: 0.95; }
+        50% { filter: drop-shadow(0 0 8px var(--color-violet)) drop-shadow(0 0 20px var(--color-violet)); opacity: 1; }
+      }
+      @keyframes cyanPulse {
+        0%, 100% { filter: drop-shadow(0 0 3px var(--color-cyan)) drop-shadow(0 0 8px var(--color-cyan)); opacity: 0.95; }
+        50% { filter: drop-shadow(0 0 8px var(--color-cyan)) drop-shadow(0 0 20px var(--color-cyan)); opacity: 1; }
+      }
+      @keyframes pinkPulse {
+        0%, 100% { filter: drop-shadow(0 0 3px var(--color-pink)) drop-shadow(0 0 8px var(--color-pink)); opacity: 0.95; }
+        50% { filter: drop-shadow(0 0 8px var(--color-pink)) drop-shadow(0 0 20px var(--color-pink)); opacity: 1; }
+      }
+      
+      .glow-violet { animation: violetPulse 4s ease-in-out infinite; }
+      .glow-cyan { animation: cyanPulse 3s ease-in-out infinite; }
+      .glow-pink { animation: pinkPulse 3.5s ease-in-out infinite; }
+      
+      /* Floating background particles */
+      @keyframes float1 {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(25px, -30px); }
+      }
+      @keyframes float2 {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(-30px, 20px); }
+      }
+      @keyframes float3 {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(20px, 25px); }
+      }
+      .floater-1 { animation: float1 8s ease-in-out infinite; }
+      .floater-2 { animation: float2 10s ease-in-out infinite; }
+      .floater-3 { animation: float3 9s ease-in-out infinite; }
+      
+      /* Typing blinker */
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .cursor-blinker {
+        animation: blink 0.9s step-end infinite;
+        fill: var(--color-cyan);
+      }
+      
+      /* Text styling */
+      .title-text {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        font-size: 52px;
+        fill: var(--color-text);
+        letter-spacing: 2px;
+      }
+      .title-bracket {
+        font-family: 'Fira Code', monospace;
+        font-weight: 700;
+        font-size: 48px;
+      }
+      .subtitle-text {
+        font-family: 'Fira Code', monospace;
+        font-weight: 500;
+        font-size: 18px;
+        fill: var(--color-cyan);
+        letter-spacing: 1px;
+      }
+      .sub-roles {
+        font-size: 14px;
+        fill: #80809b;
+      }
+    </style>
+    
+    <!-- Grid Pattern -->
+    <pattern id="cyber-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" class="grid-pattern" stroke-width="1.2" />
+    </pattern>
+  </defs>
+
+  <!-- Background Rect -->
+  <rect width="850" height="300" class="bg-rect" />
+
+  <!-- Animated Cyber Grid Pattern Overlay -->
+  <rect width="850" height="300" fill="url(#cyber-grid)" />
+  
+  <!-- Subtle Gradient Glow from Bottom -->
+  <rect width="850" height="300" fill="none" style="mix-blend-mode: screen;">
+    <animate attributeName="opacity" values="0.2;0.3;0.2" dur="5s" repeatCount="indefinite" />
+  </rect>
+
+  <!-- Floating Glow Nodes in Background -->
+  <g opacity="0.3">
+    <circle cx="150" cy="80" r="4" fill="var(--color-cyan)" class="floater-1" />
+    <circle cx="200" cy="220" r="6" fill="var(--color-violet)" class="floater-2" />
+    <circle cx="700" cy="100" r="5" fill="var(--color-pink)" class="floater-3" />
+    <circle cx="600" cy="240" r="3" fill="var(--color-cyan)" class="floater-1" />
+    <circle cx="780" cy="180" r="8" fill="var(--color-violet)" class="floater-2" />
+  </g>
+
+  <!-- Main Terminal-Inspired Header Group -->
+  <g transform="translate(425, 140)" text-anchor="middle">
+    <!-- Main Branding Title with brackets -->
+    <text class="title-text glow-pink">
+      <tspan class="title-bracket glow-violet" fill="var(--color-violet)">&lt; </tspan>
+      <tspan fill="#ffffff">RAJU3114</tspan>
+      <tspan class="title-bracket glow-cyan" fill="var(--color-cyan)"> /&gt;</tspan>
+    </text>
+    
+    <!-- Console Prompt & Main Role -->
+    <text y="50" class="subtitle-text">
+      <tspan fill="var(--color-pink)">&gt; </tspan>
+      <tspan fill="#ffffff">SOFTWARE_ENGINEER_</tspan>
+    </text>
+    
+    <!-- Specific skills / subtitle tag lines -->
+    <text y="85" class="subtitle-text sub-roles">
+      <tspan fill="#80809b">[ </tspan>
+      <tspan fill="var(--color-violet)">JAVA_DEVELOPER</tspan>
+      <tspan fill="#80809b"> // </tspan>
+      <tspan fill="var(--color-cyan)">BACKEND_SYSTEMS</tspan>
+      <tspan fill="#80809b"> // </tspan>
+      <tspan fill="var(--color-pink)">AI_EXPLORER</tspan>
+      <tspan fill="#80809b"> ]</tspan>
+    </text>
+  </g>
+
+  <!-- Cybernetic Border Lines & Tech Details -->
+  <line x1="50" y1="30" x2="800" y2="30" stroke="rgba(138, 43, 226, 0.2)" stroke-width="1" />
+  <line x1="50" y1="270" x2="800" y2="270" stroke="rgba(0, 255, 255, 0.2)" stroke-width="1" />
+  
+  <text x="60" y="23" font-family="'Fira Code', monospace" font-size="9" fill="#50506c">SYS_STATUS: READY</text>
+  <text x="730" y="23" font-family="'Fira Code', monospace" font-size="9" fill="#50506c">LOC: 0x3114_CORE</text>
+  
+  <text x="60" y="283" font-family="'Fira Code', monospace" font-size="9" fill="#50506c">HOST: github.com/Raju3114</text>
+  <text x="740" y="283" font-family="'Fira Code', monospace" font-size="9" fill="#50506c">v2.6.20_STABLE</text>
+
+  <!-- Blinking corner cursor -->
+  <rect x="801" y="265" width="8" height="6" class="cursor-blinker" />
+</svg>

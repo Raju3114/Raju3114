@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raju3114 | Software Engineer Portfolio</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Raju3114 - Software Engineer, Java Developer, and AI/Quantum ML Explorer. Specializing in scalable systems, backend services, and interactive frontends.">
+  <meta name="keywords" content="Raju3114, Raj Kumar, Java Developer, Software Engineer, Backend Engineer, Quantum ML, Graph Neural Networks, Portfoilo">
+  <meta name="author" content="Raj Kumar">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Raju3114 | Software Engineer Portfolio">
+  <meta property="og:description" content="Explore Raju3114's projects, skills, and software engineering journey. Focused on scalable systems, Java/Spring, and AI applications.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Background Canvas Particle Field -->
+  <canvas id="particle-canvas"></canvas>
+  <div class="scanlines"></div>
+
+  <!-- Translucent Navigation Bar -->
+  <header class="navbar" id="main-header">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo" id="nav-logo-btn">
+        <span class="bracket">&lt;</span>
+        <span class="logo-text">RAJU3114</span>
+        <span class="bracket">/&gt;</span>
+      </a>
+      
+      <nav class="nav-links" id="navbar-links">
+        <a href="#home" class="nav-link active" id="nav-home">Home</a>
+        <a href="#about" class="nav-link" id="nav-about">About</a>
+        <a href="#skills" class="nav-link" id="nav-skills">Skills</a>
+        <a href="#projects" class="nav-link" id="nav-projects">Projects</a>
+        <a href="#contact" class="nav-link" id="nav-contact">Contact</a>
+      </nav>
+
+      <div class="nav-status">
+        <span class="status-indicator"></span>
+        <span class="status-text">SYSTEM_ONLINE</span>
+      </div>
+      
+      <button class="mobile-toggle" id="menu-toggle-btn" aria-label="Toggle Menu">
+        <i class="ph ph-list"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- HOME SECTION (HERO) -->
+    <section id="home" class="section hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="terminal-badge">
+            <span class="pulse-dot"></span>
+            <span class="badge-text">SESSION_ACTIVE // PORT: 3114</span>
+          </div>
+          
+          <h1 class="hero-title">
+            <span class="glow-text-violet">&lt;</span>
+            <span class="name-glow">RAJ KUMAR</span>
+            <span class="glow-text-cyan">/&gt;</span>
+          </h1>
+          
+          <div class="typewriter-container">
+            <span class="console-prompt">&gt; </span>
+            <span id="typewriter-text" class="typewriter-text"></span>
+            <span class="cursor-blink">|</span>
+          </div>
+
+          <p class="hero-description">
+            Building robust high-performance backend infrastructures, exploring quantum-machine learning frontiers, and engineering scalable architectures.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary" id="cta-contact-btn">
+              <span class="btn-text">INITIALIZE CONNECTION</span>
+              <span class="btn-glow"></span>
+              <i class="ph ph-terminal-window"></i>
+            </a>
+            <a href="#projects" class="btn btn-secondary" id="cta-projects-btn">
+              <span class="btn-text">EXPLORE ARCHIVES</span>
+              <i class="ph ph-code"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Terminal Dashboard Box -->
+        <div class="hero-dashboard-wrapper reveal-element">
+          <div class="dashboard-terminal">
+            <div class="terminal-header">
+              <div class="terminal-buttons">
+                <span class="term-btn red"></span>
+                <span class="term-btn yellow"></span>
+                <span class="term-btn green"></span>
+              </div>
+              <div class="terminal-title">raju3114@core-matrix:~</div>
+              <div class="terminal-action">
+                <i class="ph ph-cpu"></i>
+              </div>
+            </div>
+            <div class="terminal-body">
+              <div class="console-line">
+                <span class="c-prompt">guest@raju3114:~$</span> <span class="c-input">neofetch</span>
+              </div>
+              <div class="neofetch-output">
+                <div class="neofetch-logo">
+                  <pre class="ascii-art">
+   /\_/\
+  ( o.o )
+   > ^ <
+  /     \
+ |       |
+  \__/\_/
+                  </pre>
+                </div>
+                <div class="neofetch-info">
+                  <div class="info-line"><span class="info-key">User</span>: Raju3114</div>
+                  <div class="info-line"><span class="info-key">Role</span>: Software Engineer</div>
+                  <div class="info-line"><span class="info-key">OS</span>: ArchLinux (WSL)</div>
+                  <div class="info-line"><span class="info-key">Kernel</span>: 5.15.90.1-microsoft</div>
+                  <div class="info-line"><span class="info-key">Uptime</span>: 99.9% uptime</div>
+                  <div class="info-line"><span class="info-key">Focus</span>: Backend & AI Systems</div>
+                  <div class="info-line"><span class="info-key">Shell</span>: zsh 5.8.1</div>
+                </div>
+              </div>
+              <div class="console-line">
+                <span class="c-prompt">guest@raju3114:~$</span> <span class="c-input">cat config.json</span>
+              </div>
+              <div class="code-json">
+<pre>
+{
+  <span class="json-key">"identity"</span>: <span class="json-val">"Raj Kumar (Raju3114)"</span>,
+  <span class="json-key">"specialization"</span>: [
+    <span class="json-val">"Java Scalability"</span>, 
+    <span class="json-val">"Backend Infrastructures"</span>,
+    <span class="json-val">"Quantum Machine Learning"</span>
+  ],
+  <span class="json-key">"status"</span>: <span class="json-val">"building_the_future"</span>
+}
+</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section about-section">
+      <div class="section-header reveal-element">
+        <h2 class="section-title"><span class="title-index">01.</span> Software Engineering Journey</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text-content reveal-element">
+          <p>
+            Hello! I am a passionate <span class="highlight-pink">Software Engineer</span> focused on creating high-performance, secure, and robust systems. My journey is rooted in a deep curiosity about how large-scale architectures function under the hood, and how mathematical models can be integrated into everyday systems.
+          </p>
+          <p>
+            I thrive in solving complex backend challenges, structuring databases logically, and writing clean, maintainable code. My technical focus ranges from designing transaction-safe <span class="highlight-violet">Java</span> applications to researching cutting-edge architectures like <span class="highlight-cyan">Graph Neural Networks</span> (GNNs) and hybrid quantum architectures.
+          </p>
+          <p>
+            Here's a breakdown of my engineering philosophy and focus areas:
+          </p>
+          
+          <div class="focus-cards-grid">
+            <div class="focus-card">
+              <i class="ph ph-shield-check"></i>
+              <h3>Scalable & Safe</h3>
+              <p>Designing layered, transaction-safe architectures that protect user data and ensure absolute system consistency.</p>
+            </div>
+            <div class="focus-card">
+              <i class="ph ph-terminal"></i>
+              <h3>Clean Backend</h3>
+              <p>Writing highly performant Object-Oriented code, structuring DBMS schemas properly, and automating deployment scripts.</p>
+            </div>
+            <div class="focus-card">
+              <i class="ph ph-brain"></i>
+              <h3>AI & Quantum ML</h3>
+              <p>Exploring the frontier of machine learning, combining graph deep learning with quantum mechanics to solve tomorrow's issues.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-terminal-profile reveal-element">
+          <div class="dashboard-terminal profile-terminal">
+            <div class="terminal-header">
+              <div class="terminal-buttons">
+                <span class="term-btn red"></span>
+                <span class="term-btn yellow"></span>
+                <span class="term-btn green"></span>
+              </div>
+              <div class="terminal-title">raju3114@journey-log:~</div>
+            </div>
+            <div class="terminal-body journey-logs">
+              <div class="log-entry">
+                <span class="log-timestamp">[2022-09-01]</span>
+                <span class="log-tag tag-init">INIT</span>
+                <span class="log-msg">Began deep dive into Object-Oriented Programming (OOP) and Java fundamentals.</span>
+              </div>
+              <div class="log-entry">
+                <span class="log-timestamp">[2023-04-15]</span>
+                <span class="log-tag tag-db">DBMS</span>
+                <span class="log-msg">Mastered SQL relational database design, query optimization, and JDBC transaction safety.</span>
+              </div>
+              <div class="log-entry">
+                <span class="log-timestamp">[2024-02-10]</span>
+                <span class="log-tag tag-web">FULLSTACK</span>
+                <span class="log-msg">Integrated Java backend APIs with modern React & TypeScript user interfaces.</span>
+              </div>
+              <div class="log-entry">
+                <span class="log-timestamp">[2025-07-20]</span>
+                <span class="log-tag tag-research">AI / ML</span>
+                <span class="log-msg">Initiated research on GNNs, PCA, and Hybrid Quantum systems with PyTorch.</span>
+              </div>
+              <div class="log-entry">
+                <span class="log-timestamp">[2026-06-20]</span>
+                <span class="log-tag tag-running">ACTIVE</span>
+                <span class="log-msg">Exploring scalable distributed systems, microservices, and reactive design patterns.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section skills-section">
+      <div class="section-header reveal-element">
+        <h2 class="section-title"><span class="title-index">02.</span> Core Engineering Suite</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <p class="section-intro reveal-element">
+        A highly specialized developer inventory outlining technologies and core foundations I utilize daily to build systems.
+      </p>
+
+      <div class="skills-grid reveal-element">
+        
+        <!-- Skill Category 1 -->
+        <div class="skill-category-card">
+          <div class="card-header-glow glow-violet"></div>
+          <div class="category-header">
+            <i class="ph ph-database"></i>
+            <h3>Backend Engine</h3>
+          </div>
+          <ul class="skills-list">
+            <li>
+              <div class="skill-info">
+                <span>Java 17 / OOP</span>
+                <span class="skill-percent">95%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-violet" style="width: 95%"></div>
+              </div>
+            </li>
+            <li>
+              <div class="skill-info">
+                <span>JDBC / Relational DBs</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-violet" style="width: 90%"></div>
+              </div>
+            </li>
+            <li>
+              <div class="skill-info">
+                <span>MySQL / DBMS / SQL</span>
+                <span class="skill-percent">92%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-violet" style="width: 92%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Skill Category 2 -->
+        <div class="skill-category-card">
+          <div class="card-header-glow glow-pink"></div>
+          <div class="category-header">
+            <i class="ph ph-code-block"></i>
+            <h3>Web & Frontend</h3>
+          </div>
+          <ul class="skills-list">
+            <li>
+              <div class="skill-info">
+                <span>React</span>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-pink" style="width: 85%"></div>
+              </div>
+            </li>
+            <li>
+              <div class="skill-info">
+                <span>TypeScript</span>
+                <span class="skill-percent">88%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-pink" style="width: 88%"></div>
+              </div>
+            </li>
+            <li>
+              <div class="skill-info">
+                <span>HTML5 / CSS3 / ES6</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-pink" style="width: 90%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Skill Category 3 -->
+        <div class="skill-category-card">
+          <div class="card-header-glow glow-cyan"></div>
+          <div class="category-header">
+            <i class="ph ph-gear"></i>
+            <h3>Development & Tools</h3>
+          </div>
+          <ul class="skills-list">
+            <li>
+              <div class="skill-info">
+                <span>Maven / Build Systems</span>
+                <span class="skill-percent">88%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-cyan" style="width: 88%"></div>
+              </div>
+            </li>
+            <li>
+              <div class="skill-info">
+                <span>Git / Version Control</span>
+                <span class="skill-percent">92%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-cyan" style="width: 92%"></div>
+              </div>
+            </li>
+            <li>
+              <div class="skill-info">
+                <span>Python</span>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-cyan" style="width: 85%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Skill Category 4 -->
+        <div class="skill-category-card">
+          <div class="card-header-glow glow-white"></div>
+          <div class="category-header">
+            <i class="ph ph-brain"></i>
+            <h3>CS Foundations</h3>
+          </div>
+          <ul class="skills-list">
+            <li>
+              <div class="skill-info">
+                <span>Data Structures & Algorithms</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-white" style="width: 90%"></div>
+              </div>
+            </li>
+            <li>
+              <div class="skill-info">
+                <span>Object-Oriented Design (OOD)</span>
+                <span class="skill-percent">94%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-white" style="width: 94%"></div>
+              </div>
+            </li>
+            <li>
+              <div class="skill-info">
+                <span>Database Management Systems</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-bar-wrapper">
+                <div class="skill-bar-fill glow-white" style="width: 90%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section projects-section">
+      <div class="section-header reveal-element">
+        <h2 class="section-title"><span class="title-index">03.</span> Featured Centerpieces</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <p class="section-intro reveal-element">
+        A demonstration of software architecture, data integrity, and complex system engineering.
+      </p>
+
+      <div class="projects-container">
+        
+        <!-- Project 1: Bank Management System -->
+        <div class="project-card reveal-element" id="project-bank">
+          <div class="project-card-inner">
+            <div class="project-glow-layer"></div>
+            
+            <div class="project-content">
+              <div class="project-header">
+                <div class="project-icon-box">
+                  <i class="ph ph-bank"></i>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/Raju3114" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="project-link-icon">
+                    <i class="ph ph-github-logo"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <h3 class="project-card-title">Bank Management System</h3>
+              <p class="project-card-desc">
+                A highly secure, transaction-safe financial ledger architecture utilizing Java 17 and React. Implements strict layered architecture and JDBC interfaces to ensure thread-safe balance operations, rollback capabilities on failure, and REST APIs for seamless fund transfers.
+              </p>
+              
+              <div class="project-features-list">
+                <div class="feature-tag-item"><i class="ph ph-check-square"></i> Transaction-safe fund transfers</div>
+                <div class="feature-tag-item"><i class="ph ph-check-square"></i> Layered enterprise architecture</div>
+                <div class="feature-tag-item"><i class="ph ph-check-square"></i> Thread-safe balance updates</div>
+              </div>
+              
+              <div class="project-tech-tags">
+                <span class="tech-tag">Java 17</span>
+                <span class="tech-tag">JDBC</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">REST APIs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Hybrid Quantum Graph Neural Network -->
+        <div class="project-card reveal-element" id="project-quantum">
+          <div class="project-card-inner">
+            <div class="project-glow-layer"></div>
+            
+            <div class="project-content">
+              <div class="project-header">
+                <div class="project-icon-box">
+                  <i class="ph ph-atom"></i>
+                </div>
+                <div class="project-links">
+                  <a href="https://github.com/Raju3114" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository" class="project-link-icon">
+                    <i class="ph ph-github-logo"></i>
+                  </a>
+                </div>
+              </div>
+              
+              <h3 class="project-card-title">Hybrid Quantum Graph Neural Network</h3>
+              <p class="project-card-desc">
+                An advanced AI exploration system combining traditional Graph Neural Networks (GNNs) with quantum-inspired architectures. Utilizes PyTorch and Scikit-learn to parse graph configurations, reducing dimensional scale using Principal Component Analysis (PCA), resulting in a 98% prediction accuracy.
+              </p>
+              
+              <div class="project-features-list">
+                <div class="feature-tag-item"><i class="ph ph-check-square"></i> 98% Predictive Classification Accuracy</div>
+                <div class="feature-tag-item"><i class="ph ph-check-square"></i> PyTorch Graph Neural Networks</div>
+                <div class="feature-tag-item"><i class="ph ph-check-square"></i> PCA Dimensionality Reduction</div>
+              </div>
+              
+              <div class="project-tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Scikit-learn</span>
+                <span class="tech-tag">PCA</span>
+                <span class="tech-tag">GNNs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section contact-section">
+      <div class="section-header reveal-element">
+        <h2 class="section-title"><span class="title-index">04.</span> Establish Connection</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="contact-grid">
+        <div class="contact-info reveal-element">
+          <h3 class="contact-info-title">Let's build something scalable.</h3>
+          <p>
+            Whether you want to discuss backend architecture patterns, quantum machine learning models, or check if I am a fit for your engineering team, feel free to drop a line. My digital node is always active.
+          </p>
+          
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <i class="ph ph-envelope-simple-open"></i>
+              <div>
+                <div class="detail-label">Email Node</div>
+                <a href="mailto:raj3114kumar@gmail.com" class="detail-value">raj3114kumar@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-detail-item">
+              <i class="ph ph-git-branch"></i>
+              <div>
+                <div class="detail-label">Version Control</div>
+                <a href="https://github.com/Raju3114" target="_blank" rel="noopener noreferrer" class="detail-value">github.com/Raju3114</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper reveal-element">
+          <form class="contact-form" id="portfolio-contact-form">
+            <div class="form-terminal-header">
+              <span class="term-prompt">raju3114@core-matrix:~$</span> <span class="term-cmd">sendmail</span>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-name">Name</label>
+              <div class="input-wrapper">
+                <input type="text" id="form-name" name="name" required placeholder="John Doe">
+                <i class="ph ph-user"></i>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="form-email">Email Address</label>
+              <div class="input-wrapper">
+                <input type="email" id="form-email" name="email" required placeholder="john@example.com">
+                <i class="ph ph-envelope"></i>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-message">Message</label>
+              <div class="input-wrapper">
+                <textarea id="form-message" name="message" required placeholder="Type your message details here..."></textarea>
+                <i class="ph ph-chat-centered-text"></i>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit" id="form-submit-btn">
+              <span class="btn-text">TRANSMIT_MESSAGE</span>
+              <span class="btn-glow"></span>
+              <i class="ph ph-paper-plane-tilt"></i>
+            </button>
+            
+            <div class="form-status-log" id="form-status-log">
+              <span class="log-status-default">[Awaiting Input] READY TO TRANSMIT</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footnotes / Terminal Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p class="footer-logo">
+        <span class="bracket">&lt;</span> RAJU3114 <span class="bracket">/&gt;</span>
+      </p>
+      <p class="footer-copyright">
+        &copy; 2026 // RAJ KUMAR. Designed with modern cyber aesthetics. All rights reserved.
+      </p>
+      <div class="footer-socials">
+        <a href="https://github.com/Raju3114" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="GitHub">
+          <i class="ph ph-github-logo"></i>
+        </a>
+        <a href="mailto:raj3114kumar@gmail.com" class="social-icon-btn" aria-label="Email">
+          <i class="ph ph-envelope"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Script -->
+  <script src="index.js"></script>
+</body>
+</html>

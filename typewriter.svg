@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 100" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;display=swap');
+      
+      .terminal-text {
+        font-family: 'Fira Code', 'Courier New', monospace;
+        font-size: 14px;
+        font-weight: 500;
+        fill: #a6accd;
+      }
+      
+      .prompt-user {
+        fill: #00f0ff;
+        font-weight: 700;
+      }
+      
+      .prompt-host {
+        fill: #f43fa1;
+      }
+      
+      .prompt-symbol {
+        fill: #8a2be2;
+      }
+
+      .message-text {
+        fill: #ffffff;
+      }
+
+      /* Typewriter Animation using clip-path */
+      @keyframes typeText {
+        from { width: 0; }
+        to { width: 620px; }
+      }
+      
+      .typed-rect {
+        animation: typeText 4.5s steps(55, end) 1.5s forwards;
+      }
+
+      /* Cursor movement matching typewriter steps */
+      @keyframes moveCursor {
+        from { transform: translateX(0px); }
+        to { transform: translateX(530px); }
+      }
+      
+      @keyframes blinkCursor {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      .cursor {
+        fill: #00f0ff;
+        animation: moveCursor 4.5s steps(55, end) 1.5s forwards, blinkCursor 0.8s infinite;
+      }
+    </style>
+
+    <!-- Clip Path for typing effect -->
+    <clipPath id="typing-clip">
+      <rect x="15" y="45" width="0" height="30" class="typed-rect" />
+    </clipPath>
+  </defs>
+
+  <!-- Background container styled as translucent glass terminal -->
+  <rect width="100%" height="100%" fill="#05050a" rx="6" stroke="#1d1d2b" stroke-width="1.2" />
+
+  <!-- Terminal Header / Prompt Line -->
+  <text x="15" y="30" class="terminal-text">
+    <tspan class="prompt-user">guest</tspan>
+    <tspan class="prompt-symbol">@</tspan>
+    <tspan class="prompt-host">raju3114-digital</tspan>
+    <tspan class="prompt-symbol">:~$</tspan>
+    <tspan fill="#ffffff"> cat welcome_handshake.sh</tspan>
+  </text>
+
+  <!-- Typed Message Line with clip path -->
+  <g clip-path="url(#typing-clip)">
+    <text x="15" y="65" class="terminal-text message-text">
+      Hi, I'm Raju — Java Developer, systems builder &amp; ML student.
+    </text>
+  </g>
+
+  <!-- Blinking Cursor that travels at the end of text -->
+  <rect x="542" y="53" width="8" height="15" class="cursor" />
+</svg>
