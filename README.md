@@ -9,7 +9,6 @@
 </p>
 
 <p align="center">
-  <a href="https://raju3114.github.io/" target="_blank"><strong>🌐 Visit Live Portfolio Website</strong></a> | 
   <a href="mailto:raj3114kumar@gmail.com"><strong>📩 Contact Digital Node</strong></a>
 </p>
 
