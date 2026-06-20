@@ -7,8 +7,12 @@
 </p>
 
 <p align="center">
-  <a href="https://raju3114.github.io/" target="_blank"><strong>🌐 Connect to Live Interface</strong></a> | 
-  <a href="mailto:raj3114kumar@gmail.com"><strong>📩 Transmit Comms Signal</strong></a>
+  <a href="https://www.linkedin.com/in/raj-kumar-a74601252" target="_blank">
+    <img src="./connect_linkedin.svg" alt="LinkedIn Node" width="48%" />
+  </a>
+  <a href="mailto:rajkumar.3114h@gmail.com">
+    <img src="./connect_email.svg" alt="Email Node" width="48%" />
+  </a>
 </p>
 
 <p align="center">

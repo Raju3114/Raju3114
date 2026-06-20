@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setTimeout(() => {
         formStatusLog.classList.add('success');
-        formStatusLog.innerHTML = `<span class="c-prompt">system@raju3114:~$</span> [SUCCESS] Message transmitted successfully to raj3114kumar@gmail.com!`;
+        formStatusLog.innerHTML = `<span class="c-prompt">system@raju3114:~$</span> [SUCCESS] Message transmitted successfully to rajkumar.3114h@gmail.com!`;
         
         submitBtn.disabled = false;
         submitText.textContent = 'TRANSMIT_MESSAGE';
