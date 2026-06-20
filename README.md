@@ -1,56 +1,63 @@
-<!-- Animated Header Banner -->
 <p align="center">
-  <img src="./banner.svg" alt="Raju3114 Profile Banner" width="100%" />
-</p>
-
-<!-- Typewriter Welcome Message -->
-<p align="center">
-  <img src="./typewriter.svg" alt="Typewriter Welcome" width="100%" />
+  <img src="./banner.svg" alt="MISSION CONTROL : RAJU3114" width="100%" />
 </p>
 
 <p align="center">
-  <a href="mailto:raj3114kumar@gmail.com"><strong>📩 Contact Digital Node</strong></a>
+  <img src="./typewriter.svg" alt="Terminal Initialization" width="100%" />
 </p>
 
----
+<p align="center">
+  <a href="https://raju3114.github.io/" target="_blank"><strong>🌐 Connect to Live Interface</strong></a> | 
+  <a href="mailto:raj3114kumar@gmail.com"><strong>📩 Transmit Comms Signal</strong></a>
+</p>
 
-### 🧬 About Me
+```text
+══════════════════════════════════════════════════════════════════════════════
+                 MISSION CONTROL // RAJU-OS v2.0 // ONLINE
+══════════════════════════════════════════════════════════════════════════════
+```
+
+### 🧬 About Me (Core Identity)
 
 I am a **Software Engineer** specializing in transaction-safe backend services, scalable object-oriented systems, and machine learning models. I focus on developing clean, well-architected software and analyzing the intersections of Graph Deep Learning and Quantum computing.
 
-- ⚙️ **Focus:** Java Scalability, Relational Databases, and Quantum ML.
+- ⚙️ **Core Focus:** Java Scalability, Relational Databases, and Quantum ML.
 - 🚀 **Philosophy:** Writing clean, thread-safe, and self-documenting code.
-- 🧠 **Learning:** Distributing computing systems and reactive programming.
+- 🧠 **Learning:** Distributed computing systems and reactive programming.
 
----
+<br>
+
+<p align="center">
+  <img src="./about.svg" alt="Engineering Logs System Readout" width="100%" />
+</p>
+
+```text
+══════════════════════════════════════════════════════════════════════════════
+                   SHIP SYSTEMS // MONITOR & DIAGNOSTICS
+══════════════════════════════════════════════════════════════════════════════
+```
 
 ### 🛠️ Tech Stack & Skills
 
-<table>
-  <tr>
-    <td valign="top" width="50%">
-      <h4>☕ Backend Engine & DB</h4>
-      <ul>
-        <li><strong>Languages:</strong> Java 17, Python</li>
-        <li><strong>Databases:</strong> MySQL, Relational DBMS</li>
-        <li><strong>Interfaces:</strong> JDBC, REST APIs</li>
-        <li><strong>Build/VC:</strong> Maven, Git</li>
-      </ul>
-    </td>
-    <td valign="top" width="50%">
-      <h4>⚛️ Web & Foundations</h4>
-      <ul>
-        <li><strong>Frontend:</strong> React, TypeScript, HTML5, CSS3, ES6</li>
-        <li><strong>CS Core:</strong> Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP)</li>
-        <li><strong>ML Tools:</strong> PyTorch, Scikit-learn, GNNs, PCA</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+* ☕ **Backend Engine:** Java 17, JDBC Interfaces, Python
+* 🗄 **Database Systems:** MySQL, Relational DBMS design, query structures
+* ⚡ **Systems Core:** Data Structures & Algorithms (DSA), Object-Oriented Design (OOD)
+* ⚛️ **Frontend Layers:** React, TypeScript, HTML5, CSS3, ES6
+* ⚙️ **Tools & Build:** Git / GitHub, Maven build systems, PyTorch
 
----
+<br>
 
-### 🏦 Featured Projects
+<p align="center">
+  <img src="./skills.svg" alt="Spacecraft Systems Dashboard" width="100%" />
+</p>
+
+```text
+══════════════════════════════════════════════════════════════════════════════
+                   MISSION PORTFOLIO // ACTIVE PROTOCOLS
+══════════════════════════════════════════════════════════════════════════════
+```
+
+### 🏦 Centerpiece Systems
 
 #### 🏛️ [Bank Management System](https://github.com/Raju3114)
 > **Stack:** Java 17, JDBC, MySQL, React, TypeScript
@@ -68,9 +75,29 @@ I am a **Software Engineer** specializing in transaction-safe backend services, 
 > - **Data Compression:** Uses Principal Component Analysis (PCA) to compress high-dimensional node features prior to neural training.
 > - **Deep Learning:** Leverages PyTorch-Geometric structures to run deep graph convolution steps.
 
----
+<br>
 
-### 📊 GitHub Diagnostics
+<p align="center">
+  <img src="./projects.svg" alt="Mission Portfolio Diagrams" width="100%" />
+</p>
+
+```text
+══════════════════════════════════════════════════════════════════════════════
+                   ARCADE MODE // HOSTILE ENGAGEMENT
+══════════════════════════════════════════════════════════════════════════════
+```
+
+<p align="center">
+  <img src="./game.svg" alt="Arcade Mode Simulation" width="100%" />
+</p>
+
+```text
+══════════════════════════════════════════════════════════════════════════════
+                   GITHUB DIAGNOSTICS & SYSTEM METRICS
+══════════════════════════════════════════════════════════════════════════════
+```
+
+### 📊 Performance Analytics
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=Raju3114&show_icons=true&theme=tokyonight" alt="Raju3114 GitHub Stats" width="48%" />
@@ -79,7 +106,7 @@ I am a **Software Engineer** specializing in transaction-safe backend services, 
 
 ---
 
-### 👾 Commit Invaders (Contribution Diagnostics)
+### 👾 Commit Invaders (Diagnostics Grid)
 
 The grid below tracks contributions to my repositories, defended daily from waves of commit invaders.
 
@@ -91,8 +118,8 @@ The grid below tracks contributions to my repositories, defended daily from wave
   </picture>
 </p>
 
----
-
-<p align="center">
-  <sub>Configured with Cyber-Neon Terminal styling. Base connection active: <b>online</b></sub>
-</p>
+```text
+══════════════════════════════════════════════════════════════════════════════
+                    [SECURE CONNECTION TERMINATED // OFF]
+══════════════════════════════════════════════════════════════════════════════
+```

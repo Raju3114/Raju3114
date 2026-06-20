@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 260" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&amp;family=Space+Grotesk:wght@700&amp;display=swap');
+      
+      :root {
+        --color-bg: #010103;
+        --color-blue: #0066ff;
+        --color-cyan: #00f0ff;
+        --color-purple: #7a22ff;
+        --color-text: #94a3b8;
+        --color-bright: #ffffff;
+      }
+      
+      .panel-bg {
+        fill: var(--color-bg);
+        stroke: rgba(0, 102, 255, 0.25);
+        stroke-width: 1.2;
+      }
+
+      .text-base {
+        font-family: 'Fira Code', 'Courier New', monospace;
+        font-size: 13px;
+        fill: var(--color-text);
+      }
+
+      .text-bright {
+        fill: var(--color-bright);
+        font-weight: bold;
+      }
+
+      .text-prompt {
+        fill: var(--color-blue);
+        font-weight: bold;
+      }
+
+      .text-log {
+        fill: var(--color-cyan);
+      }
+
+      /* Radar Sweep rotation */
+      @keyframes radarRotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .radar-line {
+        transform-origin: 710px 130px;
+        animation: radarRotate 4s linear infinite;
+        stroke: var(--color-cyan);
+        stroke-width: 1.5;
+        filter: drop-shadow(0 0 4px var(--color-cyan));
+      }
+
+      /* Blinking dots on radar */
+      @keyframes targetBlink {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 1; filter: drop-shadow(0 0 3px var(--color-cyan)); }
+      }
+      .radar-target {
+        animation: targetBlink 2s ease-in-out infinite;
+      }
+      .radar-target-delay {
+        animation: targetBlink 3s ease-in-out infinite 1s;
+      }
+
+      /* Cursor Blinking */
+      @keyframes cursorBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+      .console-cursor {
+        animation: cursorBlink 1s infinite;
+        fill: var(--color-cyan);
+      }
+
+      /* Log flicker updates */
+      @keyframes logFlicker {
+        0%, 100% { opacity: 1; }
+        45% { opacity: 1; }
+        50% { opacity: 0.8; }
+        55% { opacity: 1; }
+      }
+      .flicker-line {
+        animation: logFlicker 6s infinite;
+      }
+
+      /* Floating stars */
+      @keyframes starFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); opacity: 0.6; }
+      }
+      .star {
+        animation: starFloat 4s ease-in-out infinite;
+        fill: #ffffff;
+      }
+    </style>
+  </defs>
+
+  <!-- Panel border -->
+  <rect width="850" height="260" rx="8" class="panel-bg" />
+
+  <!-- Floating Background Stars -->
+  <g opacity="0.3">
+    <circle cx="50" cy="40" r="1" class="star" style="animation-delay: 0.5s;" />
+    <circle cx="280" cy="30" r="0.8" class="star" style="animation-delay: 1.5s;" />
+    <circle cx="450" cy="50" r="1.2" class="star" style="animation-delay: 2.2s;" />
+    <circle cx="120" cy="220" r="1" class="star" style="animation-delay: 0.8s;" />
+    <circle cx="390" cy="230" r="1" class="star" style="animation-delay: 1.8s;" />
+    <circle cx="530" cy="210" r="0.8" class="star" style="animation-delay: 2.8s;" />
+  </g>
+
+  <!-- Section Title Header -->
+  <text x="25" y="35" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" fill="var(--color-bright)" letter-spacing="1">
+    SYS_LOG // ENGINEERING_JOURNEY
+  </text>
+  <line x1="25" y1="45" x2="520" y2="45" stroke="rgba(0, 102, 255, 0.2)" stroke-width="1" />
+
+  <!-- Left Side: Terminal Log lines -->
+  <g transform="translate(25, 75)" class="text-base flicker-line">
+    <!-- Log 1 -->
+    <text y="0">
+      <tspan class="text-prompt">raju@command:~$</tspan> cat log_2022.txt
+    </text>
+    <text y="20" class="text-log">↳ Joined VIT AP (Initiated CS Foundations)</text>
+    
+    <!-- Log 2 -->
+    <text y="50">
+      <tspan class="text-prompt">raju@command:~$</tspan> cat log_2023.txt
+    </text>
+    <text y="70" class="text-log">↳ Built Object-Oriented Java &amp; JDBC applications</text>
+
+    <!-- Log 3 -->
+    <text y="100">
+      <tspan class="text-prompt">raju@command:~$</tspan> cat log_2024.txt
+    </text>
+    <text y="120" class="text-log">↳ Developed Bank Management System (Layered Core)</text>
+
+    <!-- Log 4 -->
+    <text y="150">
+      <tspan class="text-prompt">raju@command:~$</tspan> tail log_2025.txt
+    </text>
+    <text y="170" class="text-log">↳ Exploring scalable backend architectures &amp; AI</text>
+    <rect x="428" y="158" width="8" height="13" class="console-cursor" />
+  </g>
+
+  <!-- Middle: Status Board -->
+  <g transform="translate(535, 30)">
+    <rect width="130" height="200" rx="4" fill="rgba(0, 102, 255, 0.03)" stroke="rgba(0, 102, 255, 0.15)" stroke-width="1" />
+    <text x="15" y="25" font-family="'Space Grotesk', sans-serif" font-size="12" font-weight="700" fill="var(--color-bright)" letter-spacing="1">STATUS</text>
+    <line x1="15" y1="35" x2="115" y2="35" stroke="rgba(0, 102, 255, 0.15)" stroke-width="0.8" />
+    
+    <g transform="translate(15, 60)" class="text-base">
+      <text y="0" class="text-bright">Java ☕</text>
+      <text y="15" font-size="10" fill="var(--color-cyan)">[ONLINE]</text>
+      
+      <text y="50" class="text-bright">Backend 🚀</text>
+      <text y="65" font-size="10" fill="var(--color-cyan)">[ACTIVE]</text>
+
+      <text y="100" class="text-bright">DBMS 🗄</text>
+      <text y="115" font-size="10" fill="var(--color-cyan)">[ONLINE]</text>
+    </g>
+  </g>
+
+  <!-- Right Side: Radar sweep display -->
+  <g transform="translate(0, 0)">
+    <!-- Radar circular grids -->
+    <circle cx="760" cy="130" r="75" fill="rgba(0, 240, 255, 0.02)" stroke="rgba(0, 240, 255, 0.1)" stroke-width="1" />
+    <circle cx="760" cy="130" r="50" fill="none" stroke="rgba(0, 240, 255, 0.08)" stroke-width="0.8" stroke-dasharray="3, 3" />
+    <circle cx="760" cy="130" r="25" fill="none" stroke="rgba(0, 240, 255, 0.08)" stroke-width="0.8" />
+    
+    <!-- Crosshairs -->
+    <line x1="685" y1="130" x2="835" y2="130" stroke="rgba(0, 240, 255, 0.1)" stroke-width="0.8" />
+    <line x1="760" y1="55" x2="760" y2="205" stroke="rgba(0, 240, 255, 0.1)" stroke-width="0.8" />
+    
+    <!-- Radar detected targets (pulsing dots) -->
+    <circle cx="725" cy="95" r="3" fill="var(--color-cyan)" class="radar-target" />
+    <circle cx="795" cy="155" r="2.5" fill="var(--color-purple)" class="radar-target-delay" />
+    <circle cx="750" cy="165" r="2" fill="var(--color-cyan)" class="radar-target" />
+
+    <!-- Sweeping Radar Line -->
+    <line x1="760" y1="130" x2="760" y2="55" class="radar-line" />
+    
+    <!-- Radar coordinates overlay -->
+    <text x="760" y="220" text-anchor="middle" font-family="'Fira Code', monospace" font-size="8" fill="#4d5f80">RADAR_SWEEP_SCAN</text>
+  </g>
+</svg>

@@ -1,0 +1,268 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 250" width="100%" height="100%">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&amp;family=Space+Grotesk:wght@700&amp;display=swap');
+      
+      :root {
+        --color-bg: #010103;
+        --color-cyan: #00f0ff;
+        --color-blue: #0066ff;
+        --color-green: #39d353; /* GitHub commit green */
+        --color-bright: #ffffff;
+      }
+      
+      .screen-bg {
+        fill: var(--color-bg);
+        stroke: rgba(0, 102, 255, 0.25);
+        stroke-width: 1.2;
+      }
+
+      .arcade-text {
+        font-family: 'Fira Code', monospace;
+        font-size: 12px;
+        font-weight: 700;
+        fill: #94a3b8;
+      }
+
+      .score-glow {
+        fill: var(--color-cyan);
+        filter: drop-shadow(0 0 3px var(--color-cyan));
+      }
+
+      /* Background Starfield scrolling */
+      @keyframes spaceScroll {
+        from { transform: translateY(0); }
+        to { transform: translateY(60px); }
+      }
+      .star-bg {
+        animation: spaceScroll 2s linear infinite;
+        fill: #ffffff;
+      }
+
+      /* Spaceship movement keyframes */
+      @keyframes moveShip {
+        0%, 100% { transform: translateX(0px); }
+        25% { transform: translateX(175px); }
+        50% { transform: translateX(350px); }
+        75% { transform: translateX(175px); }
+      }
+      .spaceship {
+        animation: moveShip 6s linear infinite;
+      }
+
+      /* Firing lasers */
+      @keyframes laserLeft {
+        0% { y1: 200px; y2: 215px; opacity: 1; }
+        6% { y1: 75px; y2: 90px; opacity: 1; }
+        7% { y1: 65px; y2: 65px; opacity: 0; }
+        100% { opacity: 0; }
+      }
+      .laser-l {
+        stroke: var(--color-cyan);
+        stroke-width: 2.5;
+        filter: drop-shadow(0 0 4px var(--color-cyan));
+        animation: laserLeft 6s linear infinite;
+      }
+
+      @keyframes laserCenter {
+        0%, 24% { opacity: 0; }
+        25% { y1: 200px; y2: 215px; opacity: 1; }
+        31% { y1: 75px; y2: 90px; opacity: 1; }
+        32% { y1: 65px; y2: 65px; opacity: 0; }
+        33%, 74% { opacity: 0; }
+        75% { y1: 200px; y2: 215px; opacity: 1; }
+        81% { y1: 75px; y2: 90px; opacity: 1; }
+        82% { y1: 65px; y2: 65px; opacity: 0; }
+        83% { opacity: 0; }
+      }
+      .laser-c {
+        stroke: var(--color-cyan);
+        stroke-width: 2.5;
+        filter: drop-shadow(0 0 4px var(--color-cyan));
+        animation: laserCenter 6s linear infinite;
+      }
+
+      @keyframes laserRight {
+        0%, 49% { opacity: 0; }
+        50% { y1: 200px; y2: 215px; opacity: 1; }
+        56% { y1: 75px; y2: 90px; opacity: 1; }
+        57% { y1: 65px; y2: 65px; opacity: 0; }
+        58% { opacity: 0; }
+      }
+      .laser-r {
+        stroke: var(--color-cyan);
+        stroke-width: 2.5;
+        filter: drop-shadow(0 0 4px var(--color-cyan));
+        animation: laserRight 6s linear infinite;
+      }
+
+      /* Invader Hit / Explosion states */
+      @keyframes invaderL {
+        0%, 5% { opacity: 1; transform: scale(1); }
+        6% { opacity: 0.8; transform: scale(1.3); filter: brightness(2); }
+        7% { opacity: 0; transform: scale(0); }
+        94% { opacity: 0; }
+        98% { opacity: 0.2; transform: scale(0.5); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      .invader-left {
+        animation: invaderL 6s linear infinite;
+        transform-origin: 250px 75px;
+      }
+
+      @keyframes invaderC {
+        0%, 30% { opacity: 1; transform: scale(1); }
+        31% { opacity: 0.8; transform: scale(1.3); filter: brightness(2); }
+        32% { opacity: 0; transform: scale(0); }
+        79% { opacity: 0; }
+        80% { opacity: 0.1; transform: scale(0.5); }
+        81%, 85% { opacity: 1; transform: scale(1); }
+        86% { opacity: 0.8; transform: scale(1.3); filter: brightness(2); }
+        87% { opacity: 0; transform: scale(0); }
+        100% { opacity: 0; }
+      }
+      .invader-center {
+        animation: invaderC 6s linear infinite;
+        transform-origin: 425px 75px;
+      }
+
+      @keyframes invaderR {
+        0%, 55% { opacity: 1; transform: scale(1); }
+        56% { opacity: 0.8; transform: scale(1.3); filter: brightness(2); }
+        57% { opacity: 0; transform: scale(0); }
+        95% { opacity: 0; }
+        98% { opacity: 0.2; transform: scale(0.5); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      .invader-right {
+        animation: invaderR 6s linear infinite;
+        transform-origin: 600px 75px;
+      }
+
+      /* Particle Debris bursts */
+      @keyframes burstL {
+        0%, 5% { opacity: 0; transform: translate(0, 0); }
+        6% { opacity: 1; }
+        12% { opacity: 0; transform: translate(var(--tx), var(--ty)); }
+        100% { opacity: 0; }
+      }
+      .deb-l { animation: burstL 6s linear infinite; }
+
+      @keyframes burstC {
+        0%, 30% { opacity: 0; transform: translate(0, 0); }
+        31% { opacity: 1; }
+        37% { opacity: 0; transform: translate(var(--tx), var(--ty)); }
+        79% { opacity: 0; transform: translate(0, 0); }
+        80% { opacity: 0; }
+        86% { opacity: 1; }
+        92% { opacity: 0; transform: translate(var(--tx), var(--ty)); }
+        100% { opacity: 0; }
+      }
+      .deb-c { animation: burstC 6s linear infinite; }
+
+      @keyframes burstR {
+        0%, 55% { opacity: 0; transform: translate(0, 0); }
+        56% { opacity: 1; }
+        62% { opacity: 0; transform: translate(var(--tx), var(--ty)); }
+        100% { opacity: 0; }
+      }
+      .deb-r { animation: burstR 6s linear infinite; }
+
+    </style>
+  </defs>
+
+  <!-- Screen Frame -->
+  <rect width="850" height="250" rx="8" class="screen-bg" />
+
+  <!-- Scrolling space background -->
+  <g opacity="0.35">
+    <circle cx="100" cy="10" r="1.2" class="star-bg" />
+    <circle cx="280" cy="30" r="0.8" class="star-bg" />
+    <circle cx="450" cy="20" r="1.5" class="star-bg" />
+    <circle cx="620" cy="45" r="1" class="star-bg" />
+    <circle cx="790" cy="15" r="1.2" class="star-bg" />
+    <circle cx="180" cy="40" r="0.8" class="star-bg" />
+    <circle cx="530" cy="35" r="1" class="star-bg" />
+  </g>
+
+  <!-- Top Dashboard Stats -->
+  <g transform="translate(25, 30)" class="arcade-text">
+    <text x="0" y="0">MISSION: <tspan class="score-glow">RAJU3114</tspan></text>
+    <text x="320" y="0">SCORE: <tspan class="score-glow">3114</tspan></text>
+    <text x="600" y="0">LEVEL: <tspan fill="#ffffff">SOFTWARE ENGINEER</tspan></text>
+  </g>
+  <line x1="25" y1="42" x2="825" y2="42" stroke="rgba(0, 102, 255, 0.2)" stroke-width="1.2" />
+
+  <!-- Play Area Border boundaries -->
+  <line x1="25" y1="225" x2="825" y2="225" stroke="rgba(0, 102, 255, 0.15)" stroke-width="1" stroke-dasharray="8, 8" />
+
+  <!-- Animated Lasers -->
+  <!-- Left Laser -->
+  <line x1="250" y1="0" x2="250" y2="0" class="laser-l" />
+  <!-- Center Laser -->
+  <line x1="425" y1="0" x2="425" y2="0" class="laser-c" />
+  <!-- Right Laser -->
+  <line x1="600" y1="0" x2="600" y2="0" class="laser-r" />
+
+  <!-- Invaders (Green Commit Blocks) -->
+  <!-- Left Invader -->
+  <g class="invader-left">
+    <rect x="238" y="63" width="24" height="24" rx="3" fill="var(--color-green)" filter="drop-shadow(0 0 3px var(--color-green))" />
+    <!-- Eyes -->
+    <rect x="243" y="69" width="4" height="4" fill="#000000" />
+    <rect x="253" y="69" width="4" height="4" fill="#000000" />
+    <!-- Antennas -->
+    <path d="M 242 63 L 239 58 M 258 63 L 261 58" stroke="var(--color-green)" stroke-width="1.5" />
+  </g>
+  <!-- Left Invader debris -->
+  <g transform="translate(250, 75)" fill="var(--color-green)">
+    <circle cx="0" cy="0" r="2" class="deb-l" style="--tx: -15px; --ty: -15px;" />
+    <circle cx="0" cy="0" r="1.5" class="deb-l" style="--tx: 18px; --ty: -12px;" />
+    <circle cx="0" cy="0" r="2.5" class="deb-l" style="--tx: -10px; --ty: 18px;" />
+    <circle cx="0" cy="0" r="2" class="deb-l" style="--tx: 15px; --ty: 15px;" />
+  </g>
+
+  <!-- Center Invader -->
+  <g class="invader-center">
+    <rect x="413" y="63" width="24" height="24" rx="3" fill="var(--color-green)" filter="drop-shadow(0 0 3px var(--color-green))" />
+    <rect x="418" y="69" width="4" height="4" fill="#000000" />
+    <rect x="428" y="69" width="4" height="4" fill="#000000" />
+    <path d="M 417 63 L 414 58 M 433 63 L 436 58" stroke="var(--color-green)" stroke-width="1.5" />
+  </g>
+  <!-- Center Invader debris -->
+  <g transform="translate(425, 75)" fill="var(--color-green)">
+    <circle cx="0" cy="0" r="2" class="deb-c" style="--tx: -18px; --ty: -10px;" />
+    <circle cx="0" cy="0" r="1.5" class="deb-c" style="--tx: 15px; --ty: -18px;" />
+    <circle cx="0" cy="0" r="2.5" class="deb-c" style="--tx: -12px; --ty: 15px;" />
+    <circle cx="0" cy="0" r="2" class="deb-c" style="--tx: 18px; --ty: 12px;" />
+  </g>
+
+  <!-- Right Invader -->
+  <g class="invader-right">
+    <rect x="588" y="63" width="24" height="24" rx="3" fill="var(--color-green)" filter="drop-shadow(0 0 3px var(--color-green))" />
+    <rect x="593" y="69" width="4" height="4" fill="#000000" />
+    <rect x="603" y="69" width="4" height="4" fill="#000000" />
+    <path d="M 592 63 L 589 58 M 608 63 L 611 58" stroke="var(--color-green)" stroke-width="1.5" />
+  </g>
+  <!-- Right Invader debris -->
+  <g transform="translate(600, 75)" fill="var(--color-green)">
+    <circle cx="0" cy="0" r="2" class="deb-r" style="--tx: -12px; --ty: -18px;" />
+    <circle cx="0" cy="0" r="1.5" class="deb-r" style="--tx: 18px; --ty: -10px;" />
+    <circle cx="0" cy="0" r="2.5" class="deb-r" style="--tx: -15px; --ty: 15px;" />
+    <circle cx="0" cy="0" r="2" class="deb-r" style="--tx: 12px; --ty: 18px;" />
+  </g>
+
+  <!-- Animated Spaceship -->
+  <g class="spaceship">
+    <g transform="translate(250, 210)">
+      <!-- Ship Engine Thruster flame -->
+      <path d="M -6 11 L 0 20 L 6 11 Z" fill="var(--color-cyan)">
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="0.15s" repeatCount="indefinite" />
+      </path>
+      <!-- Ship wings/body -->
+      <path d="M 0 -15 L -16 10 L -6 8 L 0 3 L 6 8 L 16 10 Z" fill="#ffffff" stroke="var(--color-blue)" stroke-width="1" filter="drop-shadow(0 0 2px var(--color-blue))" />
+      <!-- Ship cockpit glass -->
+      <circle cx="0" cy="-3" r="3.5" fill="var(--color-cyan)" />
+    </g>
+  </g>
+</svg>
