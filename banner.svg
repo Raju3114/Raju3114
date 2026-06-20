@@ -161,7 +161,7 @@
     <!-- Space Console Prompt -->
     <text y="50" class="subtitle-text">
       <tspan fill="var(--space-blue)">&gt; </tspan>
-      <tspan fill="#ffffff" letter-spacing="2px">COSMIC_ENGINEER_</tspan>
+      <tspan fill="#ffffff" letter-spacing="2px">SOFTWARE_ENGINEER_</tspan>
     </text>
     
     <!-- Subtitle Roles in space aesthetic -->
